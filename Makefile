@@ -24,45 +24,54 @@ INC_DIR		:=	./include
 HEA_DIR		:=	./headers
 LIB_DIR		:=	./lib
 
-LIB			:=	$(wildcard $(LIB_DIR)/*)
-#LIB_ARC		:=	$(addsuffix .a,$(notdir $(LIB)))
-LIB_ARC		:=	./lib/libft/libft.a
+LIBFT		:=	libft
+LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
+LIB_LIB_ARC	:=	$(LIB_LIBFT)/libft.a
 
 SRC			:=	$(wildcard $(SRC_DIR)/*.c)
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra#-g -fsanitize=address
+CFL			:=	-Wall -Werror -Wextra
+CFL_DB		:=	-Wall -Werror -Wextra -g -fsanitize=address
 
+ifdef DB
+COMPILE_DB	:=	$(CC) $(CFL_DB)
+else
 COMPILE		:=	$(CC) $(CFL)
+endif
 
 #========================================#
 #============== RECIPIES  ===============#
 #========================================#
 
-all: obj $(NAME)
+all: $(NAME) | $(OBJ_DIR)
 
-obj:
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(LIB_ARC) $(OBJ)
+$(NAME): $(LIB_LIB_ARC) $(LIB_MLX_ARC) $(OBJ)
 	ar rcs $(ARCH) $^
 
 test: obj $(OBJ)
 	$(COMPILE) -o $(EXE) $(OBJ)
 
-db: FORCE
-	$(LIB_ARC)
+test_db: clean
+	@ $(MAKE) test DB=1
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	$(COMPILE) -o $@ -c $<
 
-clean:
+clean: | $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)
 	rm -rf $(OBJ_DIR)
+	@make -C $(LIB_MLX) clean 
+	@make -C $(LIB_LIBFT) clean
 
 fclean: clean
 	rm -f $(ARCH)
+	@make -C $(LIB_MLX) fclean
+	@make -C $(LIB_LIBFT) fclean
 
 tclean: fclean
 	rm -f $(EXE)
@@ -73,9 +82,11 @@ re: fclean all
 #============== LIBRARIES ===============#
 #========================================#
 
-$(LIB_DIR)/%/%.a:
-	@make -C $@
+$(LIB_MLX_ARC):
+	@make -C $(LIB_MLX) 
 
+$(LIB_LIB_ARC):
+	@make -C $(LIB_LIBFT)
 
 
 #========================================#
