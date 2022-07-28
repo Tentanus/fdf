@@ -6,12 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/12 20:13:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/07/12 20:44:00 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/07/28 13:57:04 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "../include/MLX42.h"
+#include "MLX42.h"
 #include <stdlib.h>
 #include <stdio.h>
 #define WIDTH 256

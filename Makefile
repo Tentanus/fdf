@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/07/13 20:18:43 by mweverli      ########   odam.nl          #
+#    Updated: 2022/07/28 18:27:51 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@
 #========================================#
 
 NAME		:=	fdf
-EXE			:=	$(NAME).exe
-ARCH		:=	$(NAME).a
 
 OBJ_DIR		:=	./OBJ
 SRC_DIR		:=	./src
@@ -35,14 +33,15 @@ LIB_LIB_ARC	:=	$(LIB_LIBFT)/libft.a
 SRC			:=	$(shell ls src/)
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-HEADER		:=	-I ./include -I $(LIB_MLX)/include -I $(LIB_LIBFT)
+HEADER		:=	-I ./include -I $(LIB_MLX)/include/MLX42 -I $(LIB_LIBFT)
+LIB			:=	-lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/
 
 CC			:=	gcc
 CFL			:=	-Wall -Werror -Wextra
 CFL_DB		:=	-Wall -Werror -Wextra -g -fsanitize=address
 
 ifdef DB
-COMPILE_DB	:=	$(CC) $(CFL_DB)
+COMPILE		:=	$(CC) $(CFL_DB)
 else
 COMPILE		:=	$(CC) $(CFL)
 endif
@@ -60,7 +59,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(LIB_LIB_ARC) $(LIB_MLX_ARC) $(OBJ)
-	ar rcs $(ARCH) $^ $(HEADER)
+	$(COMPILE) $^ $(HEADER) -o $(NAME)
 
 test: $(OBJ)
 	$(COMPILE) -o $(EXE) $(OBJ) $(HEADER)
@@ -69,7 +68,7 @@ test_db: clean
 	@make test DB=1
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(COMPILE) -o $@ -c $< $(HEADER)
+	$(COMPILE) -o $@ -c $< $(HEADER) $(LIB)
 
 clean: | $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)

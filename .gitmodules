@@ -1,6 +1,0 @@
-[submodule "lib/libft"]
-	path = lib/libft
-	url = https://github.com/Tentanus/libft
-[submodule "lib/mlx"]
-	path = lib/mlx
-	url = https://github.com/codam-coding-college/MLX42
