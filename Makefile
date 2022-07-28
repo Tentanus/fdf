@@ -24,12 +24,18 @@ INC_DIR		:=	./include
 HEA_DIR		:=	./headers
 LIB_DIR		:=	./lib
 
+MLX			:=	mlx
+LIB_MLX		:=	$(LIB_DIR)/$(MLX)
+LIB_MLX_ARC	:=	$(LIB_MLX)/libmlx42.a
+
 LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
 LIB_LIB_ARC	:=	$(LIB_LIBFT)/libft.a
 
-SRC			:=	$(wildcard $(SRC_DIR)/*.c)
-OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
+SRC			:=	$(shell ls src/)
+OBJ			:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+
+HEADER		:=	-I ./include -I $(LIB_MLX)/include -I $(LIB_LIBFT)
 
 CC			:=	gcc
 CFL			:=	-Wall -Werror -Wextra
@@ -41,26 +47,29 @@ else
 COMPILE		:=	$(CC) $(CFL)
 endif
 
+test_var: $(FORCE)
+	$(OBJ)
+
 #========================================#
 #============== RECIPIES  ===============#
 #========================================#
 
-all: $(NAME) | $(OBJ_DIR)
+all: $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(LIB_LIB_ARC) $(LIB_MLX_ARC) $(OBJ)
-	ar rcs $(ARCH) $^
+	ar rcs $(ARCH) $^ $(HEADER)
 
-test: obj $(OBJ)
-	$(COMPILE) -o $(EXE) $(OBJ)
+test: $(OBJ)
+	$(COMPILE) -o $(EXE) $(OBJ) $(HEADER)
 
 test_db: clean
-	@ $(MAKE) test DB=1
+	@make test DB=1
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(COMPILE) -o $@ -c $<
+$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(COMPILE) -o $@ -c $< $(HEADER)
 
 clean: | $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)
