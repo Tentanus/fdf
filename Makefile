@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/01 21:26:34 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/01 21:30:41 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,9 +102,9 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm $(LIB_MLX_ARC)
-	@rm $(LIB_LIB_ARC)
-	@rm $(LIB_GNL_ARC)
+	@rm -f $(LIB_MLX_ARC)
+	@rm -f $(LIB_LIB_ARC)
+	@rm -f $(LIB_GNL_ARC)
 
 tclean: fclean
 	rm -f $(EXE)
