@@ -6,15 +6,17 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/12 20:13:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/07/28 13:57:04 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/01 19:23:03 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include <stdlib.h>
 #include <stdio.h>
-#define WIDTH 256
+#define WIDTH 500
 #define HEIGHT 256
+
+static mlx_image_t	*g_img;
 
 int32_t main(void)
 {
@@ -23,7 +25,15 @@ int32_t main(void)
 	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
+
+	g_img = mlx_new_image(mlx, 128, 128); //creates a new image
+	mlx_image_to_window(mlx, g_img, 0, 0);  // Adds an image to the render queue.
+
+	mlx_put_pixel(g_img, 64, 64, 0xFFFFFFFF); // Single white pixel in the middle.
 	mlx_loop(mlx);
+
+	mlx_delete_image(mlx, g_img); // Once the application request an exit, cleanup.
+
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/07/28 18:27:51 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/01 21:26:34 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,12 @@ NAME		:=	fdf
 OBJ_DIR		:=	./OBJ
 SRC_DIR		:=	./src
 INC_DIR		:=	./include
-HEA_DIR		:=	./headers
 LIB_DIR		:=	./lib
+
+SRC			:=	$(shell ls src/)
+OBJ			:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+
+#============== LIBRARIES ===============#
 
 MLX			:=	mlx
 LIB_MLX		:=	$(LIB_DIR)/$(MLX)
@@ -28,13 +32,32 @@ LIB_MLX_ARC	:=	$(LIB_MLX)/libmlx42.a
 
 LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
-LIB_LIB_ARC	:=	$(LIB_LIBFT)/libft.a
+LIB_LIB_ARC	:=	$(LIB_LIBFT)/$(LIBFT).a
 
-SRC			:=	$(shell ls src/)
-OBJ			:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+GNL		:=	get_next_line
+LIB_GNL	:=	$(LIB_DIR)/$(GNL)
+LIB_GNL_ARC	:=	$(LIB_GNL)/$(GNL).a
 
-HEADER		:=	-I ./include -I $(LIB_MLX)/include/MLX42 -I $(LIB_LIBFT)
-LIB			:=	-lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/
+#=============== COLOURS ================#
+
+BOLD	:= \033[1m
+RED		:= \033[31;1m
+GREEN	:= \033[32;1m
+CYAN	:= \033[36;1m
+RESET	:= \033[0m
+
+#============ TEST ARGUMENTS ============#
+
+ARG_	:=	
+ARG_1	:=	./maps/
+
+#============= COMPILATION ==============#
+
+HEADER		:=	-I $(INC_DIR) \
+				-I $(LIB_MLX)/include/MLX42 \
+				-I $(LIB_LIBFT)/include \
+				-I $(LIB_GNL)/include
+LIB			:=	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 CC			:=	gcc
 CFL			:=	-Wall -Werror -Wextra
@@ -46,9 +69,6 @@ else
 COMPILE		:=	$(CC) $(CFL)
 endif
 
-test_var: $(FORCE)
-	$(OBJ)
-
 #========================================#
 #============== RECIPIES  ===============#
 #========================================#
@@ -56,30 +76,35 @@ test_var: $(FORCE)
 all: $(NAME)
 
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $@
 
-$(NAME): $(LIB_LIB_ARC) $(LIB_MLX_ARC) $(OBJ)
-	$(COMPILE) $^ $(HEADER) -o $(NAME)
+$(NAME): $(LIB_MLX_ARC) $(LIB_LIB_ARC) $(LIB_GNL_ARC) $(OBJ)
+	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB)
+	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE: $(NAME) READY$(RESET)"
 
-test: $(OBJ)
-	$(COMPILE) -o $(EXE) $(OBJ) $(HEADER)
+test:	$(NAME)
+	./fdf
 
 test_db: clean
-	@make test DB=1
+	@make $(NAME) DB=1
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(COMPILE) -o $@ -c $< $(HEADER) $(LIB)
+	@$(COMPILE) -o $@ -c $< $(HEADER)
+	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
 
-clean: | $(OBJ_DIR)
+clean:
 	@mkdir -p $(OBJ_DIR)
-	rm -rf $(OBJ_DIR)
-	@make -C $(LIB_MLX) clean 
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIB_MLX) clean
 	@make -C $(LIB_LIBFT) clean
+	@make -C $(LIB_GNL) clean
+	@echo "$(RED)$(BOLD)Cleaning FDF$(RESET)"
 
 fclean: clean
-	rm -f $(ARCH)
-	@make -C $(LIB_MLX) fclean
-	@make -C $(LIB_LIBFT) fclean
+	@rm -f $(NAME)
+	@rm $(LIB_MLX_ARC)
+	@rm $(LIB_LIB_ARC)
+	@rm $(LIB_GNL_ARC)
 
 tclean: fclean
 	rm -f $(EXE)
@@ -96,13 +121,18 @@ $(LIB_MLX_ARC):
 $(LIB_LIB_ARC):
 	@make -C $(LIB_LIBFT)
 
+$(LIB_GNL_ARC):
+	@make -C $(LIB_GNL)
 
 #========================================#
 #============ MISCELLANEOUS =============#
 #========================================#
 
-.PHONY: all clean fclean tclean re
+.PHONY: all clean fclean tclean re test test_db
 
 .DEFAULT_GOAL := all
 
 FORCE:
+
+test_var: $(FORCE)
+	$(SRC)
