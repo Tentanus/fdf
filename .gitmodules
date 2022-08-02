@@ -4,6 +4,7 @@
 [submodule "lib/mlx"]
 	path = lib/mlx
 	url = https://github.com/codam-coding-college/MLX42
+	ingnore = dirty
 [submodule "lib/get_next_line"]
 	path = lib/get_next_line
 	url = https://github.com/Tentanus/get_next_line.git

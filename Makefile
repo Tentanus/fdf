@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/01 21:30:41 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/02 13:08:04 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,9 @@ RESET	:= \033[0m
 
 #============ TEST ARGUMENTS ============#
 
-ARG_	:=	
-ARG_1	:=	./maps/
+ARG_	:=	./maps/
+ARG_2	:=	./maps/SQ_2x2.fdf
+ARG_2	:=	./maps/SQ_4x4.fdf
 
 #============= COMPILATION ==============#
 
