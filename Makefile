@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/02 13:08:04 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/09 13:55:51 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,9 +81,10 @@ $(OBJ_DIR):
 
 $(NAME): $(LIB_MLX_ARC) $(LIB_LIB_ARC) $(LIB_GNL_ARC) $(OBJ)
 	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB)
-	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE: $(NAME) READY$(RESET)"
+	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
 
 test:	$(NAME)
+	@echo "$(CYAN)$(BOLD) RUNNING ./$(NAME)$(RESET)"
 	./fdf
 
 test_db: clean

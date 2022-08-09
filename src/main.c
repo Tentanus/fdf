@@ -6,23 +6,26 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/12 20:13:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/03 14:30:07 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/09 18:11:06 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include <stdlib.h>
 #include <stdio.h>
-#define WIDTH 256
-#define HEIGHT 256
+#define WIDTH 1920
+#define HEIGHT 1080
 
 static mlx_image_t	*g_img;
 
 void	hook(void *param)
 {
-	mlx_t	*mlx;
+//	mlx_t	*mlx;
+//	int x, y;
 
-	mlx = param;
+//	mlx = param;
+//	mlx_get_mouse_pos(mlx, &x, &y);
+//	printf("Current mouse pos: %d %d\n", x, y);
 	if (mlx_is_key_down(param, MLX_KEY_ESCAPE))
 		mlx_close_window(param);
 	if (mlx_is_key_down(param, MLX_KEY_UP))
@@ -47,19 +50,19 @@ int32_t main(void)
 		exit(EXIT_FAILURE);
 
 	g_img = mlx_new_image(mlx, WIDTH, HEIGHT); //creates a new image of WIDTHxHEIGT
-	
-	while ((x + 64) < HEIGHT && (x - a) <= 0) // x <= a
+
+	while (x < HEIGHT && x <= a) // x <= a
 	{
-		while ((y + 64) < WIDTH && (y - a) <= 0)
+		while (y < WIDTH && y <= a)
 		{
-			mlx_put_pixel(g_img, 64 + x, 64 + y, 0x00000080); // Single white pixel in the middle.
+			mlx_put_pixel(g_img, x, y, 0x00000080); // Single white pixel in the middle.
 			y++;
 		}
 		y = 0;
 		x++;
 	}
 
-	mlx_image_to_window(mlx, g_img, 0, 0);  // Adds an image to the render queue.
+	mlx_image_to_window(mlx, g_img, WIDTH/2, HEIGHT/2);  // Adds an image to the render queue.
 	mlx_loop_hook(mlx, &hook, mlx);
 	mlx_loop(mlx);
 
