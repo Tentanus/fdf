@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/12 20:13:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/09 18:11:06 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/17 17:24:18 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ static mlx_image_t	*g_img;
 
 void	hook(void *param)
 {
-//	mlx_t	*mlx;
-//	int x, y;
+	int x, y, z;
 
-//	mlx = param;
-//	mlx_get_mouse_pos(mlx, &x, &y);
-//	printf("Current mouse pos: %d %d\n", x, y);
+	z = mlx_get_time();
+	mlx_get_mouse_pos(param, &x, &y);
+	printf("Current mouse pos: %d %d %d\n", x, y, z);
 	if (mlx_is_key_down(param, MLX_KEY_ESCAPE))
 		mlx_close_window(param);
 	if (mlx_is_key_down(param, MLX_KEY_UP))
