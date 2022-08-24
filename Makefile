@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/09 13:55:51 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/24 13:50:54 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,9 @@ RESET	:= \033[0m
 #============ TEST ARGUMENTS ============#
 
 ARG_	:=	./maps/
-ARG_2	:=	./maps/SQ_2x2.fdf
-ARG_2	:=	./maps/SQ_4x4.fdf
+ARG_1	:=	$(ARG)SQ_2x2.fdf
+ARG_2	:=	$(ARG)SQ_4x4.fdf
+ARG_3	:=	$(ARG)42.fdf
 
 #============= COMPILATION ==============#
 
@@ -85,7 +86,9 @@ $(NAME): $(LIB_MLX_ARC) $(LIB_LIB_ARC) $(LIB_GNL_ARC) $(OBJ)
 
 test:	$(NAME)
 	@echo "$(CYAN)$(BOLD) RUNNING ./$(NAME)$(RESET)"
-	./fdf
+
+test_42: test
+	./fdf $(ARG_3)
 
 test_db: clean
 	@make $(NAME) DB=1
@@ -94,12 +97,14 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
 	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
 
-clean:
-	@mkdir -p $(OBJ_DIR)
-	@rm -rf $(OBJ_DIR)
+clean_lib:
 	@make -C $(LIB_MLX) clean
 	@make -C $(LIB_LIBFT) clean
 	@make -C $(LIB_GNL) clean
+
+clean:
+	@mkdir -p $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)$(BOLD)Cleaning FDF$(RESET)"
 
 fclean: clean
