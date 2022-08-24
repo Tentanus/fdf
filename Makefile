@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/24 13:50:54 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/24 21:01:05 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,18 @@ LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
 LIB_LIB_ARC	:=	$(LIB_LIBFT)/$(LIBFT).a
 
-GNL		:=	get_next_line
-LIB_GNL	:=	$(LIB_DIR)/$(GNL)
+GNL			:=	get_next_line
+LIB_GNL		:=	$(LIB_DIR)/$(GNL)
 LIB_GNL_ARC	:=	$(LIB_GNL)/$(GNL).a
+
+PINT		:=	libftprintf
+LIB_PINT	:=	$(LIB_DIR)/$(PINT)
+LIB_PINT_ARC:=	$(LIB_PINT)/$(PINT).a
+
+LIB_LIST	:=	$(LIB_MLX_ARC) \
+				$(LIB_LIB_ARC) \
+				$(LIB_GNL_ARC) \
+				$(LIB_PINT_ARC)
 
 #=============== COLOURS ================#
 
@@ -58,7 +67,9 @@ ARG_3	:=	$(ARG)42.fdf
 HEADER		:=	-I $(INC_DIR) \
 				-I $(LIB_MLX)/include/MLX42 \
 				-I $(LIB_LIBFT)/include \
-				-I $(LIB_GNL)/include
+				-I $(LIB_GNL)/include \
+				-I $(LIB_PINT)
+
 LIB			:=	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 CC			:=	gcc
@@ -80,8 +91,8 @@ all: $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $@
 
-$(NAME): $(LIB_MLX_ARC) $(LIB_LIB_ARC) $(LIB_GNL_ARC) $(OBJ)
-	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB)
+$(NAME): $(LIB_LIST) $(OBJ)
+	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB) $(LIB_LIST) 
 	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
 
 test:	$(NAME)
@@ -101,6 +112,7 @@ clean_lib:
 	@make -C $(LIB_MLX) clean
 	@make -C $(LIB_LIBFT) clean
 	@make -C $(LIB_GNL) clean
+	@make -C $(LIB_PINT) clean
 
 clean:
 	@mkdir -p $(OBJ_DIR)
@@ -112,6 +124,7 @@ fclean: clean
 	@rm -f $(LIB_MLX_ARC)
 	@rm -f $(LIB_LIB_ARC)
 	@rm -f $(LIB_GNL_ARC)
+	@rm -f $(LIB_PINT_ARC)
 
 tclean: fclean
 	rm -f $(EXE)
@@ -131,6 +144,9 @@ $(LIB_LIB_ARC):
 $(LIB_GNL_ARC):
 	@make -C $(LIB_GNL)
 
+$(LIB_PINT_ARC):
+	@make -C $(LIB_PINT)
+
 #========================================#
 #============ MISCELLANEOUS =============#
 #========================================#
@@ -138,8 +154,6 @@ $(LIB_GNL_ARC):
 .PHONY: all clean fclean tclean re test test_db
 
 .DEFAULT_GOAL := all
-
-FORCE:
 
 test_var: $(FORCE)
 	$(SRC)

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/12 20:13:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/24 13:51:59 by mweverli      ########   odam.nl         */
+/*   Created: 2022/08/24 20:32:50 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/08/24 22:15:31 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void	hook(void *param)
 
 int32_t main(int argc, char **argv)
 {
+
 	if (argc != 2)
-		fdf_exit(1, "main")
+		fdf_exit(1, "main");
+	else
+	{
+		check_input(argv[1]);
+		fdf_init()
+	}
+	
 }
