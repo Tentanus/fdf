@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/24 21:01:05 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/24 22:51:45 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ GNL			:=	get_next_line
 LIB_GNL		:=	$(LIB_DIR)/$(GNL)
 LIB_GNL_ARC	:=	$(LIB_GNL)/$(GNL).a
 
-PINT		:=	libftprintf
+PINT		:=	printf
 LIB_PINT	:=	$(LIB_DIR)/$(PINT)
 LIB_PINT_ARC:=	$(LIB_PINT)/$(PINT).a
 
@@ -155,5 +155,3 @@ $(LIB_PINT_ARC):
 
 .DEFAULT_GOAL := all
 
-test_var: $(FORCE)
-	$(SRC)
