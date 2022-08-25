@@ -5,17 +5,13 @@
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/24 20:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/24 22:15:31 by mweverli      ########   odam.nl         */
+/*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/08/25 18:15:23 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "fdf.h"
-#include <stdlib.h>
-#include <stdio.h>
-#define WIDTH 1920
-#define HEIGHT 1080
 
 static mlx_image_t	*g_img;
 
@@ -35,13 +31,14 @@ void	hook(void *param)
 
 int32_t main(int argc, char **argv)
 {
+	t_fdf	*fdf;
 
 	if (argc != 2)
 		fdf_exit(1, "main");
 	else
 	{
 		check_input(argv[1]);
-		fdf_init()
+		fdf = fdf_init(argv[1]);
 	}
 	
 }

@@ -5,20 +5,8 @@
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/24 20:32:44 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/24 22:15:21 by mweverli      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   fdf.h                                              :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: mweverli <mweverli@student.codam.n>          +#+                     */
-/*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/24 20:25:54 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/25 18:15:16 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +15,15 @@
 
 //INCLUDES
 
-# include <limits.h>
-# include <stdlib.h>	// malloc free exit
 # include <unistd.h>	// close read write
 # include <fcntl.h>		// open
+# include <stdlib.h>	// malloc free exit
 # include <stdio.h>		// perror
 # include <errno.h>		// errno
 # include <string.h>	// strerror
 # include <math.h>		// math functions
+# include <limits.h>
+# include "MLX42.h"
 
 //DEFINITIONS / MACROS
 
@@ -46,16 +35,19 @@
 typedef struct s_fdf
 {
 	mlx_t	*mlx;
-
+	size_t	map_height;
+	size_t	map_width;
 }	t_fdf;
 
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
+t_fdf	*fdf_init(const char *f_name);
 void	check_input(const char *str);
 
 // LIBRARY FUNCTION
 
 int		ft_printf(const char *str, ...);
+char	*get_next_line(int fd);
 
 #endif

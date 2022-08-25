@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_input.c                                      :+:    :+:            */
+/*   fdf_init.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/24 20:32:37 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/25 18:15:14 by mweverli      ########   odam.nl         */
+/*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/08/25 18:15:06 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "MLX42.h"
 #include "fdf.h"
+#include "libft.h"
 
-void	check_input(const char *f_name)
+t_fdf	*fdf_init(const char *f_name)
 {
-	size_t		len;
+	int			fd;
+	const char	*dir;
+	char		*paht;
 
-	len = ft_strlen(f_name) - 4;
-	if (len <= 0 || ft_strncmp(&f_name[len], ".fdf", 4))
-		fdf_exit(2, "check_input");
+
+	dir = "./maps/";
+	path = ft_strjoin(dir, f_name);
+	fd = open(path, O_RDONLY);
+	free(path);
+	if (fd == -1)
+		fdf_exit(3, "fdf_init");
+
+	close(fd);
+	return (NULL);
 }
