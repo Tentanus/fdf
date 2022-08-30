@@ -32,17 +32,27 @@
 
 // STRUCTURES
 
+typedef struct s_dmap
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_dmap;
+
 typedef struct s_fdf
 {
-	mlx_t	*mlx;
-	size_t	map_height;
-	size_t	map_width;
+	mlx_t		*mlx;
+	size_t		map_height;
+	size_t		map_width;
+	t_dmap		*dmap;
+	int			*map;
+	char		*line_map;
 }	t_fdf;
 
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
-t_fdf	*fdf_init(const char *f_name);
+void	fdf_init(const char *f_name);
 void	check_input(const char *str);
 
 // LIBRARY FUNCTION
