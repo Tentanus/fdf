@@ -119,7 +119,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)$(BOLD)Cleaning FDF$(RESET)"
 
-fclean: clean
+fclean: clean clean_lib
 	@rm -f $(NAME)
 	@rm -f $(LIB_MLX_ARC)
 	@rm -f $(LIB_LIB_ARC)
