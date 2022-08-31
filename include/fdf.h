@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/25 18:15:16 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/31 13:28:44 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <math.h>		// math functions
 # include <limits.h>
 # include "MLX42.h"
+# include "libft.h"
 
 //DEFINITIONS / MACROS
 
@@ -52,8 +53,7 @@ typedef struct s_fdf
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
-void	fdf_init(const char *f_name);
-void	check_input(const char *str);
+t_fdf	fdf_init(const char *f_name);
 
 // LIBRARY FUNCTION
 
