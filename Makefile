@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/08/24 22:51:45 by mweverli      ########   odam.nl          #
+#    Updated: 2022/08/31 15:45:19 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ HEADER		:=	-I $(INC_DIR) \
 LIB			:=	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra
+CFL			:=	-Wall -Werror -Wextra -g
 CFL_DB		:=	-Wall -Werror -Wextra -g -fsanitize=address
 
 ifdef DB
@@ -101,14 +101,14 @@ test:	$(NAME)
 test_42: test
 	./fdf $(ARG_3)
 
-test_db: clean
+db: clean
 	@make $(NAME) DB=1
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
 	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
 
-clean_lib:
+lclean:
 	@make -C $(LIB_MLX) clean
 	@make -C $(LIB_LIBFT) clean
 	@make -C $(LIB_GNL) clean
@@ -119,7 +119,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)$(BOLD)Cleaning FDF$(RESET)"
 
-fclean: clean clean_lib
+fclean: clean 
 	@rm -f $(NAME)
 	@rm -f $(LIB_MLX_ARC)
 	@rm -f $(LIB_LIB_ARC)

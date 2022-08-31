@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/31 13:28:44 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/08/31 19:49:43 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,20 @@
 
 // STRUCTURES
 
-typedef struct s_dmap
+typedef struct s_dimmap
 {
-	int	x;
-	int	y;
-	int	z;
-}	t_dmap;
+	float	x;
+	float	y;
+	float	z;
+}	t_dimmap;
 
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	size_t		map_height;
-	size_t		map_width;
-	t_dmap		*dmap;
-	int			*map;
-	char		*line_map;
+	size_t		map_x;
+	size_t		map_y;
+	t_dimmap	*dimmap;
+	int			*intmap;
 }	t_fdf;
 
 // FUNCTIONS

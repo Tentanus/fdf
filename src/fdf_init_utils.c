@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_input.c                                      :+:    :+:            */
+/*   fdf_init_utils.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/24 20:32:37 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/31 13:16:50 by mweverli      ########   odam.nl         */
+/*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/08/31 19:49:44 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fdf.h"
 
-void	check_input(const char *f_name)
+int	skiphex(char *str)
 {
-	size_t		len;
+	size_t i;
 
-	len = ft_strlen(f_name) - 4;
-	if (len <= 0 || ft_strncmp(&f_name[len], ".fdf", 4))
-		fdf_exit(2, "check_input");
+	i = 0;
+	if (str[i] == ',')
+		i++;
+	while (ft_isalnum(str[i]))
+		i++;
+	return (i);
+}
+
+int	return_fd(const char *f_name)
+{
+	int			fd;
+	const char	*dir;
+	char		*path;
+
+	dir = "./maps/";
+	path = ft_strjoin(dir, f_name);
+	fd = open(path, O_RDONLY);
+	free(path);
+	if (fd == -1)
+		fdf_exit(1, "fdf_init/return_fd");
+	return (fd);
 }
