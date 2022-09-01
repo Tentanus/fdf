@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/31 19:49:44 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/01 21:51:02 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@ int	skiphex(char *str)
 {
 	size_t i;
 
-	i = 0;
-	if (str[i] == ',')
-		i++;
+	i = 1;
 	while (ft_isalnum(str[i]))
+		i++;
+	return (i);
+}
+
+int	skipnumb(char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (ft_isdigit(str[i]))
 		i++;
 	return (i);
 }
@@ -32,6 +40,8 @@ int	return_fd(const char *f_name)
 
 	dir = "./maps/";
 	path = ft_strjoin(dir, f_name);
+	if (!path)
+		fdf_exit(1, "fdf_init_utils/return_fd");
 	fd = open(path, O_RDONLY);
 	free(path);
 	if (fd == -1)

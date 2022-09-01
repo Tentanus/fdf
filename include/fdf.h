@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/08/31 19:49:43 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/01 21:51:04 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_fdf
 	size_t		map_y;
 	t_dimmap	*dimmap;
 	int			*intmap;
+	int32_t		*colmap;
 }	t_fdf;
 
 // FUNCTIONS
