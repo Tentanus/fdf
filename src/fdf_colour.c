@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fdf_init_utils.h                                   :+:    :+:            */
+/*   fdf_colour.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/03 14:13:59 by mweverli      ########   odam.nl         */
+/*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/09/03 14:13:46 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-//FUNCTIONS
+int get_colour(char *str)
+{
+	int	i;
 
-int	skiphex(char *str);
-int	skipnumb(char *str);
-int	return_fd(const char *f_name);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 
+	//this is a grabage funciton not yet written
+	//
+}

@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/01 21:51:04 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/03 14:17:30 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_fdf
 
 void	fdf_exit(int error_id, const char *loc);
 t_fdf	fdf_init(const char *f_name);
+int		get_colour(char *str);
 
 // LIBRARY FUNCTION
 

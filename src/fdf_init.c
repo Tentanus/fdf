@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/01 21:51:00 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/03 14:12:38 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_linemap(int fd)
 		buf[read_ret] = '\0';
 		tmp = ft_strjoin_fs1(line_map, buf);
 		if (!tmp)
-			fdf_exit(1, "fdf_init/get_linemap")
+			fdf_exit(1, "fdf_init/get_linemap");
 		line_map = tmp;
 		read_ret = read(fd, buf, 10000);
 	}
@@ -35,29 +35,29 @@ char	*get_linemap(int fd)
 	return (line_map);
 }
 
-void	get_mapdimention(t_fdf *fdf, char *line_map)
+void	get_mapdimention(t_fdf *fdf, char *str)
 {
 	size_t	i;
 
 	fdf->map_x = 0;
 	fdf->map_y = 0;
 	i = 0;
-	while (line_map[i])
+	while (str[i])
 	{
-		if (ft_isdigit(line_map[i]))
+		if (ft_isdigit(str[i]))
 		{
 			fdf->map_x++;
-			i += skipnumb(&line_map[i]);
+			i += skipnumb(&str[i]);
 		}
-		if (line_map[i] == ',')
-			i += skiphex(&line_map[i]);
-		if (line_map[i] == '\n')
+		if (str[i] == ',')
+			i += skiphex(&str[i]);
+		if (str[i] == '\n')
 			fdf->map_y++;
 		i++;
 	}
 }
 
-void	init_map(t_fdf *fdf, char *line_map)
+void	init_map(t_fdf *fdf, char *str)
 {
 	size_t	i;
 	size_t	index_int;
@@ -68,43 +68,44 @@ void	init_map(t_fdf *fdf, char *line_map)
 	fdf->dimmap = malloc(sizeof(t_dimmap) * (fdf->map_x * fdf->map_y));
 	if (!fdf->intmap || !fdf->dimmap)
 		fdf_exit(1, "fdf_init/init_map");
-	while (line_map[i])
+	while (str[i])
 	{
-		if (ft_isdigit((int) line_map[i]))
+		if (ft_isdigit((int) str[i]))
 		{
-			fdf->intmap[index_int] = ft_atoi(&line_map[i - 1]);
-			fdf->dimmap[index_int].x = 0;
-			fdf->dimmap[index_int].y = 0;
+			fdf->intmap[index_int] = ft_atoi(&str[i - 1]);
+			fdf->dimmap[index_int].x = (float) (index_int % fdf->map_x);
+			fdf->dimmap[index_int].y = (float) (index_int / fdf->map_y);
 			fdf->dimmap[index_int].z = (float) fdf->intmap[index_int];
-			i += skipnumb(&line_map[i]);
+			i += skipnumb(&str[i]);
 			index_int++;
 		}
-		if (line_map[i] == ',')
-			i += skiphex(&line_map[i]);
+		if (str[i] == ',')
+			i += skiphex(&str[i]);
 		i++;
 	}
 }
 
-void	init_colmap(t_fdf fdf, char *line_map)
+void	init_colmap(t_fdf *fdf, char *str)
 {
 	size_t	i;
+	size_t	index_int;
 
 	i = 0;
-	index_int;
+	index_int = 0;
 	fdf->colmap = malloc(sizeof(int) * (fdf->map_x * fdf->map_y));
 	if (!fdf->intmap || !fdf->dimmap)
 		fdf_exit(1, "fdf_init/get_colmap");
-	while (line_map[i])
+	while (str[i])
 	{
-		if (ft_isdigit((int) line_map[i]))
+		if (ft_isdigit((int) str[i]))
 		{
 			index_int++;
-			i += skipnumb(&line_map[i]);
+			i += skipnumb(&str[i]);
 		}
-		if (line_map[i] == ',')
+		if (str[i] == ',')
 		{
-			fdf->colmap = get_colour(&line_map[i]);
-			i += skiphex(&linemap[i]);
+			fdf->colmap[index_int] = 10;
+			i += skiphex(&str[i]);
 		}
 		i++;
 	}
