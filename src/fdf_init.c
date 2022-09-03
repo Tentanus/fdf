@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/03 14:12:38 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/04 01:19:22 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ char	*get_linemap(int fd)
 	while (read_ret != 0)
 	{
 		buf[read_ret] = '\0';
-		tmp = ft_strjoin_fs1(line_map, buf);
+		tmp = ft_strjoin(line_map, buf);
 		if (!tmp)
 			fdf_exit(1, "fdf_init/get_linemap");
+		free(line_map);
 		line_map = tmp;
 		read_ret = read(fd, buf, 10000);
 	}
-	free(tmp);
 	return (line_map);
 }
 
@@ -42,7 +42,7 @@ void	get_mapdimention(t_fdf *fdf, char *str)
 	fdf->map_x = 0;
 	fdf->map_y = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] != '\n')
 	{
 		if (ft_isdigit(str[i]))
 		{
@@ -51,6 +51,10 @@ void	get_mapdimention(t_fdf *fdf, char *str)
 		}
 		if (str[i] == ',')
 			i += skiphex(&str[i]);
+		i++;
+	}
+	while (str[i])
+	{
 		if (str[i] == '\n')
 			fdf->map_y++;
 		i++;
@@ -70,12 +74,13 @@ void	init_map(t_fdf *fdf, char *str)
 		fdf_exit(1, "fdf_init/init_map");
 	while (str[i])
 	{
-		if (ft_isdigit((int) str[i]))
+		if (ft_isdigit((int) str[i]) || str[i] == '-')
 		{
-			fdf->intmap[index_int] = ft_atoi(&str[i - 1]);
+			fdf->intmap[index_int] = ft_atoi(&str[i]);
 			fdf->dimmap[index_int].x = (float) (index_int % fdf->map_x);
 			fdf->dimmap[index_int].y = (float) (index_int / fdf->map_y);
 			fdf->dimmap[index_int].z = (float) fdf->intmap[index_int];
+			printf("fdf->dim:%zu\t%f %f %f\n", index_int, fdf->dimmap[index_int].x, fdf->dimmap[index_int].y, fdf->dimmap[index_int].z);
 			i += skipnumb(&str[i]);
 			index_int++;
 		}

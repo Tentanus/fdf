@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/03 14:17:27 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/04 01:26:21 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int32_t main(int argc, char **argv)
 		check_input(argv[1]);
 		fdf = fdf_init(argv[1]);
 	}
-	for (int i = 0; i <= (fdf.map_x * fdf.map_y); i++)
+	for (int i = 0; i < (int) (fdf.map_x * fdf.map_y); i++)
 	{
-		printf(
+//		printf("int: %d\n", fdf.intmap[i]);
+//		printf("dim: %f %f %f\n", fdf.dimmap[i].x, fdf.dimmap[i].y, fdf.dimmap[i].z);
+		printf("dim:\t%f\t%f\t%f\n", fdf.dimmap[i].x, fdf.dimmap[i].y , fdf.dimmap[i].z);
 	}
 }
 

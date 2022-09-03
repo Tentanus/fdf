@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/03 13:44:32 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/04 01:26:22 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	skipnumb(char *str)
 	size_t i;
 
 	i = 0;
+	if (str[i] == '-')
+		i++;
 	while (ft_isdigit(str[i]))
 		i++;
 	return (i);
@@ -39,6 +41,7 @@ int	return_fd(const char *f_name)
 	char		*path;
 
 	dir = "./maps/";
+	if ()
 	path = ft_strjoin(dir, f_name);
 	if (!path)
 		fdf_exit(1, "fdf_init_utils/return_fd");
@@ -48,3 +51,5 @@ int	return_fd(const char *f_name)
 		fdf_exit(1, "fdf_init/return_fd");
 	return (fd);
 }
+
+// ADD ft_strstr in return_fd to allow for ./maps in input
