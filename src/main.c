@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/04 01:26:21 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/05 16:47:16 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,20 @@ int32_t main(int argc, char **argv)
 		check_input(argv[1]);
 		fdf = fdf_init(argv[1]);
 	}
-	for (int i = 0; i < (int) (fdf.map_x * fdf.map_y); i++)
-	{
-//		printf("int: %d\n", fdf.intmap[i]);
-//		printf("dim: %f %f %f\n", fdf.dimmap[i].x, fdf.dimmap[i].y, fdf.dimmap[i].z);
-		printf("dim:\t%f\t%f\t%f\n", fdf.dimmap[i].x, fdf.dimmap[i].y , fdf.dimmap[i].z);
-	}
+
+
+//	
+//	//TESTS 
+//	//INIT FDF: 
+//		printf("int: %zu x %zu\n", fdf.map_x, fdf.map_y);
+//		for (int i = 0; i < (int) (fdf.map_x * fdf.map_y); i++)
+//		{
+//	//		printf("int: %d\n", fdf.intmap[i]);
+//			printf("dim:\t%d\t%f\t%f\t%f\n", i, fdf.pval[i].x, fdf.pval[i].y , fdf.pval[i].z);
+//			printf("col:\t\t%X\n", fdf.pval[i].col);
+//		}
+//	
+return (1);
 }
 
 

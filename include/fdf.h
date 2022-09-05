@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/03 14:19:45 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/05 18:34:35 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,32 @@
 
 // STRUCTURES
 
-typedef struct s_dimmap
+typedef struct s_pval
 {
 	float	x;
 	float	y;
 	float	z;
-}	t_dimmap;
+	int				r;
+	int				g;
+	int				b;
+	unsigned int	col;
+}	t_pval;
 
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
 	size_t		map_x;
 	size_t		map_y;
-	t_dimmap	*dimmap;
-	int			*intmap;
-	int32_t		*colmap;
+	t_pval		*pval;
 }	t_fdf;
 
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
 t_fdf	fdf_init(const char *f_name);
-int		get_colour(char *str);
+int		skiphex(char *str);
+
+int		get_colour(t_pval pval, char *str);
 
 // LIBRARY FUNCTION
 
