@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/05 18:34:31 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/05 19:01:31 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ void	init_pval(t_fdf *fdf, char *str)
 	}
 }
 
-
-
 t_fdf	fdf_init(const char *f_name)
 {
 	t_fdf	fdf;
@@ -103,6 +101,12 @@ t_fdf	fdf_init(const char *f_name)
 	line_map = get_linemap(fd);
 	get_mapdimention(&fdf, line_map);
 	init_pval(&fdf, line_map);
+	fdf->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, f_name, 1);
+	fdf->img = mlx_new_image(fdf->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!(fdf->mlx) || !(fdf->img))
+		fdf_exit(1, "fdf_init");
+
+
 
 	free(line_map);
 	close(fd);

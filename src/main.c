@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/05 16:47:16 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/05 19:01:37 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int32_t main(int argc, char **argv)
 	{
 		check_input(argv[1]);
 		fdf = fdf_init(argv[1]);
+		fdf_loop(fdf);
 	}
 
 
