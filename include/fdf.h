@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/05 18:34:35 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/06 20:30:08 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_pval
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
+	mlx_image_t	img;
 	size_t		map_x;
 	size_t		map_y;
 	t_pval		*pval;

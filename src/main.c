@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/05 19:01:37 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/06 20:30:20 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@ int32_t main(int argc, char **argv)
 		fdf_exit(2, "main");
 	else
 	{
-		check_input(argv[1]);
+		check_idnput(argv[1]);
 		fdf = fdf_init(argv[1]);
-		fdf_loop(fdf);
+		fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, f_name, true);
+		fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+		if (!(fdf.mlx) || !(fdf.img))
+			fdf_exit(1, "main @ mlx alloc");
 	}
 
 
