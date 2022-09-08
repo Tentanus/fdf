@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/06 20:30:06 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/08 18:30:59 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,18 @@ void	init_pval(t_fdf *fdf, char *str)
 	{
 		if (ft_isdigit((int) str[i]) || str[i] == '-')
 		{
-			fdf->pval[index_int].x = (float) (index_int % fdf->map_x);
-			fdf->pval[index_int].y = (float) (index_int / fdf->map_x);
-			fdf->pval[index_int].z = (float) ft_atoi(&str[i]);
-			i += skipnumb(&str[i]);
+			printf("%zu\n%s\n", index_int, &str[i]);
+			i += get_pval(fdf, &str[i], index_int);
 			if (str[i] == ',')
-				i += get_colour(fdf->pval[index_int], &str[i]);
+				i += get_colour(&(fdf->pval[index_int]), &str[i]);
 			else
-				fdf->pval[index_int].col = 0;
+				get_colour(&(fdf->pval[index_int]), "0xFFFFFF");
 			index_int++;
 		}
 		else
 			i++;
 	}
+	printf("%zu\t%zu\n", fdf->map_x, fdf->map_y);
 }
 
 t_fdf	fdf_init(const char *f_name)
@@ -102,6 +101,14 @@ t_fdf	fdf_init(const char *f_name)
 	line_map = get_linemap(fd);
 	get_mapdimention(&fdf, line_map);
 	init_pval(&fdf, line_map);
+	free(line_map);
+	line_map = ft_strjoin("MLX42 - ", f_name);
+/*
+	fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, line_map, true);
+	fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!(fdf.mlx) || !(fdf.img))
+		fdf_exit(1, "main @ mlx alloc");
+*/
 	free(line_map);
 	close(fd);
 	return (fdf);
