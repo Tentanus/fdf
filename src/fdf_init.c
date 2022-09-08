@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/08 18:30:59 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/08 18:37:00 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	init_pval(t_fdf *fdf, char *str)
 	{
 		if (ft_isdigit((int) str[i]) || str[i] == '-')
 		{
-			printf("%zu\n%s\n", index_int, &str[i]);
 			i += get_pval(fdf, &str[i], index_int);
 			if (str[i] == ',')
 				i += get_colour(&(fdf->pval[index_int]), &str[i]);
