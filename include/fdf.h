@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/06 20:30:08 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/08 18:31:09 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_point
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	mlx_image_t	img;
+	void*		img;
 	size_t		map_x;
 	size_t		map_y;
 	t_pval		*pval;
@@ -71,8 +71,7 @@ typedef struct s_fdf
 void	fdf_exit(int error_id, const char *loc);
 t_fdf	fdf_init(const char *f_name);
 int		skiphex(char *str);
-
-int		get_colour(t_pval pval, char *str);
+int		get_colour(t_pval *pval, char *str);
 
 // LIBRARY FUNCTION
 

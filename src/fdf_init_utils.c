@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/05 18:34:34 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/08 18:31:14 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	skiphex(char *str)
 {
 	size_t i;
 
-	i = 1;
+	i = 0;
+	if (str[i] == ',')
+		i++;
 	while (ft_isalnum(str[i]))
 		i++;
 	return (i);
@@ -41,7 +43,7 @@ int	return_fd(const char *f_name)
 	char		*path;
 
 	path = NULL;
-	dir = "./maps/\0";
+	dir = "maps/\0";
 	if (!ft_strnstr(f_name, dir, 7))
 	{
 		path = ft_strjoin(dir, f_name);
@@ -61,4 +63,15 @@ void	set_defaults(t_fdf *fdf)
 {
 	fdf->scale = SCALE;
 	fdf->z_scale = Z_SCALE;
+}
+
+int	get_pval(t_fdf *fdf, char *str, int index)
+{
+	int i;
+
+	fdf->pval[index].x = (float) (index % fdf->map_x);
+	fdf->pval[index].y = (float) (index / fdf->map_x);
+	fdf->pval[index].z = (float) ft_atoi(str);
+	i = skipnumb(str);
+	return (i);
 }

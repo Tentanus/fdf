@@ -6,27 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/06 20:30:20 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/08 18:30:56 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static mlx_image_t	*g_img;
-
-void	hook(void *param)
-{
-	if (mlx_is_key_down(param, MLX_KEY_ESCAPE))
-		mlx_close_window(param);
-	if (mlx_is_key_down(param, MLX_KEY_UP))
-		g_img->instances[0].y -= 5;
-	if (mlx_is_key_down(param, MLX_KEY_DOWN))
-		g_img->instances[0].y += 5;
-	if (mlx_is_key_down(param, MLX_KEY_LEFT))
-		g_img->instances[0].x -= 5;
-	if (mlx_is_key_down(param, MLX_KEY_RIGHT))
-		g_img->instances[0].x += 5;
-}
 
 void	check_input(const char *f_name)
 {
@@ -64,6 +48,8 @@ int32_t main(int argc, char **argv)
 //			printf("col:\t\t%X\n", fdf.pval[i].col);
 //		}
 //	
+	mlx_close_window(fdf.mlx);
+	mlx_terminate(fdf.mlx);
 return (1);
 }
 
