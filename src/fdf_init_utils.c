@@ -57,3 +57,8 @@ int	return_fd(const char *f_name)
 	return (fd);
 }
 
+void	set_defaults(t_fdf *fdf)
+{
+	fdf->scale = SCALE;
+	fdf->z_scale = Z_SCALE;
+}

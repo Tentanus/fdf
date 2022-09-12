@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fdf_loop.c                                         :+:    :+:            */
+/*   fdf_render.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
@@ -10,7 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	fdf_loop(t_fdf *fdf)
+#include "fdf.h"
+
+t_point	get_x(t_fdf fdf, size_t index)
 {
-	
+	t_point	point;
+
+	point.x1 = fdf.pval[index].x;
+	point.y1 = fdf.pval[index].y;
+	if ()
+	point.x2 = fdf.pval[index + 1];
+	return (point);
+}
+
+void	fdf_render(t_fdf fdf)
+{
+	size_t	index;
+	t_point	point;
+
+	index = 0;
+	while (index < (fdf.map_x * fdf.map_y))
+	{
+		point = get_x(fdf, index);
+	}
 }

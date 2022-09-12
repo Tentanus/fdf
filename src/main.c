@@ -51,9 +51,8 @@ int32_t main(int argc, char **argv)
 		fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 		if (!(fdf.mlx) || !(fdf.img))
 			fdf_exit(1, "main @ mlx alloc");
+		fdf_render(fdf);
 	}
-
-
 //	
 //	//TESTS 
 //	//INIT FDF: 

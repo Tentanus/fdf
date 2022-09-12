@@ -12,7 +12,7 @@
 
 //FUNCTIONS
 
-int	skiphex(char *str);
-int	skipnumb(char *str);
-int	return_fd(const char *f_name);
-
+int		skiphex(char *str);
+int		skipnumb(char *str);
+int		return_fd(const char *f_name);
+void	set_defaults(t_fdf fdf);

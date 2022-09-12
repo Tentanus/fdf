@@ -30,6 +30,8 @@
 
 # define WINDOW_WIDTH 1980
 # define WINDOW_HEIGHT 1080
+# define SCALE 1
+# define Z_SCALE 1
 
 // STRUCTURES
 
@@ -44,6 +46,14 @@ typedef struct s_pval
 	unsigned int	col;
 }	t_pval;
 
+typedef struct s_point
+{
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+}	t_point;
+
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
@@ -51,6 +61,9 @@ typedef struct s_fdf
 	size_t		map_x;
 	size_t		map_y;
 	t_pval		*pval;
+	int			scale;
+	int			z_scale;
+	int			perspective;
 }	t_fdf;
 
 // FUNCTIONS

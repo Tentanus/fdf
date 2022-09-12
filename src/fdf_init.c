@@ -84,7 +84,7 @@ void	init_pval(t_fdf *fdf, char *str)
 			if (str[i] == ',')
 				i += get_colour(fdf->pval[index_int], &str[i]);
 			else
-				fdf->pval[index_int].col = 0;
+				fdf->pval[index_int].col = 0xFFFFFF;
 			index_int++;
 		}
 		else
@@ -101,6 +101,7 @@ t_fdf	fdf_init(const char *f_name)
 	fd = return_fd(f_name);
 	line_map = get_linemap(fd);
 	get_mapdimention(&fdf, line_map);
+	set_defaults(fdf);
 	init_pval(&fdf, line_map);
 	free(line_map);
 	close(fd);
