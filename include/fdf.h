@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/08 18:31:09 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/12 19:45:10 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,21 @@ typedef struct s_fdf
 	void*		img;
 	size_t		map_x;
 	size_t		map_y;
+	size_t		window_x;
+	size_t		window_y;
+	size_t		offset_x;
+	size_t		offset_y;
 	t_pval		*pval;
 	int			scale;
 	int			z_scale;
-	int			perspective;
+
 }	t_fdf;
 
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
 t_fdf	fdf_init(const char *f_name);
+void	fdf_render(t_fdf fdf);
 int		skiphex(char *str);
 int		get_colour(t_pval *pval, char *str);
 

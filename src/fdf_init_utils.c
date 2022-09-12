@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/08 18:31:14 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/12 19:42:00 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	return_fd(const char *f_name)
 	char		*path;
 
 	path = NULL;
-	dir = "maps/\0";
-	if (!ft_strnstr(f_name, dir, 7))
+	dir = "maps/";
+	if (!ft_strnstr(f_name, "maps/", 7))
 	{
 		path = ft_strjoin(dir, f_name);
 		if (!path)
@@ -63,6 +63,10 @@ void	set_defaults(t_fdf *fdf)
 {
 	fdf->scale = SCALE;
 	fdf->z_scale = Z_SCALE;
+	fdf->window_x = WINDOW_WIDTH;
+	fdf->window_y = WINDOW_HEIGHT;
+//	fdf->offset_x = 
+//	fdf->offset_y = 
 }
 
 int	get_pval(t_fdf *fdf, char *str, int index)

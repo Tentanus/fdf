@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/08 18:37:00 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/12 19:42:07 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	init_pval(t_fdf *fdf, char *str)
 
 	i = 0;
 	index_int = 0;
-	fdf->pval = malloc(sizeof(t_pval) * (fdf->map_x * fdf->map_y));
+	fdf->pval = ft_calloc(sizeof(t_pval), ((fdf->map_x * fdf->map_y) + 1));
 	if (!fdf->pval)
 		fdf_exit(1, "fdf_init/init_pval");
 	while (str[i])
@@ -91,16 +91,16 @@ void	init_pval(t_fdf *fdf, char *str)
 
 t_fdf	fdf_init(const char *f_name)
 {
-	t_fdf			fdf;
-	int				fd;
-	char			*line_map;
+	t_fdf	fdf;
+	int		fd;
+	char	*line_map;
 
 	fd = return_fd(f_name);
 	line_map = get_linemap(fd);
 	get_mapdimention(&fdf, line_map);
-	set_defaults(fdf);
 	init_pval(&fdf, line_map);
 	free(line_map);
 	close(fd);
+	set_defaults(fdf);
 	return (fdf);
 }

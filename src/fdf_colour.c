@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/08 18:31:06 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/12 14:47:01 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	get_colour(t_pval *pval, char *str)
 	pval->g = ((ft_htoi(str) >> 8) & 0xFF);
 	pval->b = (ft_htoi(str) & 0xFF);
 	pval->col = get_rgb(pval->r, pval->g, pval->b);
-//	printf("r: %X\tg: %X\tb: %X\tcol: %X %p\nEnd\n\n", pval->r, pval->g, pval->b, pval->col, &(pval->col));
 	return (i);
 }
