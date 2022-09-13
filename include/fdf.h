@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/12 19:45:10 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/13 18:00:45 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 
 # define WINDOW_WIDTH 1980
 # define WINDOW_HEIGHT 1080
-# define SCALE 1
-# define Z_SCALE 1
 
 // STRUCTURES
 
@@ -45,6 +43,12 @@ typedef struct s_pval
 	int				b;
 	unsigned int	col;
 }	t_pval;
+
+typedef struct s_def
+{
+	size_t	offset_x;
+	size_t	offset_y;
+}	t_def;
 
 typedef struct s_point
 {
@@ -60,11 +64,8 @@ typedef struct s_fdf
 	void*		img;
 	size_t		map_x;
 	size_t		map_y;
-	size_t		window_x;
-	size_t		window_y;
-	size_t		offset_x;
-	size_t		offset_y;
 	t_pval		*pval;
+	t_def		def;
 	int			scale;
 	int			z_scale;
 

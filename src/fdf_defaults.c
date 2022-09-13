@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fdf_init_utils.h                                   :+:    :+:            */
+/*   fdf_defaults.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/13 18:00:44 by mweverli      ########   odam.nl         */
+/*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/09/13 17:55:07 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_INIT_UTILS_H
-# define FDF_INIT_UTILS_H
-//DEFAULT MACROS 
+#include "fdf.h"
+#include "fdf_init_utils.h"
 
-# define SCALE 1
-# define Z_SCALE 1
-# define PIXEL_X 1600
-# define PIXEL_Y 900
+void	set_defaults(t_fdf *fdf)
+{
+	fdf->scale = SCALE;
+	fdf->z_scale = Z_SCALE;
+	fdf->def.offset_x = (PIXEL_X / 2);
+	fdf->def.offset_y = (PIXEL_Y / 2);
+}
 
-//FUNCTIONS
-
-int		skiphex(char *str);
-int		skipnumb(char *str);
-int		return_fd(const char *f_name);
-void	set_defaults(t_fdf fdf);
-int		get_pval(t_fdf *fdf, const char *str, int index);
-
-#endif

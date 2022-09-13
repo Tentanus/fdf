@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/12 19:42:00 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/13 17:25:39 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,6 @@ int	return_fd(const char *f_name)
 	if (fd == -1)
 		fdf_exit(1, "fdf_init/return_fd");
 	return (fd);
-}
-
-void	set_defaults(t_fdf *fdf)
-{
-	fdf->scale = SCALE;
-	fdf->z_scale = Z_SCALE;
-	fdf->window_x = WINDOW_WIDTH;
-	fdf->window_y = WINDOW_HEIGHT;
-//	fdf->offset_x = 
-//	fdf->offset_y = 
 }
 
 int	get_pval(t_fdf *fdf, char *str, int index)
