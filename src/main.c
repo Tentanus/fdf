@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/12 19:45:11 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/14 15:30:49 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int32_t main(int argc, char **argv)
 		fdf = fdf_init(argv[1]);
 		printf("init ok\n");
 		fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, argv[1], true);
-		fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+		fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH + WINDOW_BORDER
+				, WINDOW_HEIGHT + WINDOW_BORDER);
 		if (!(fdf.mlx) || !(fdf.img))
 			fdf_exit(1, "main @ mlx alloc");
-//		fdf_render(fdf);
+		fdf_render(fdf);
 	}
 //	
 //	//TESTS 

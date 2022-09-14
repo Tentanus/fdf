@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/13 18:00:45 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/14 15:30:45 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define WINDOW_WIDTH 1980
 # define WINDOW_HEIGHT 1080
+# define WINDOW_BORDER 100
 
 // STRUCTURES
 
@@ -50,12 +51,22 @@ typedef struct s_def
 	size_t	offset_y;
 }	t_def;
 
+typedef struct s_3float
+{
+	float			x;
+	float			y;
+	float			z;
+	unsigned int	col;
+}	t_3float;
+
 typedef struct s_point
 {
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
+	t_3float	p1;
+	t_3float	p2;
+	float		dx;
+	float		dy;
+	int			sx;
+	int			xy;
 }	t_point;
 
 typedef struct s_fdf
