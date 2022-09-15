@@ -6,12 +6,13 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/14 12:38:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/15 17:11:18 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_INIT_UTILS_H
-# define FDF_INIT_UTILS_H
+#ifndef FDF_INIT_H
+# define FDF_INIT_H
+
 //DEFAULT MACROS 
 
 # define SCALE 1

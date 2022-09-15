@@ -6,13 +6,13 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/14 12:00:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/14 15:30:48 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/15 16:54:59 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw(t_fdf fdf, t_point point)
+void	draw_line(t_fdf fdf, t_point point)
 {
 	
 }

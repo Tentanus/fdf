@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/14 15:30:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/15 17:43:51 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,5 @@ void	set_defaults(t_fdf *fdf)
 {
 	fdf->scale = SCALE;
 	fdf->z_scale = get_z_scale(fdf);
-	fdf->def.offset_x = (WINDOW_WIDTH / 2);
-	fdf->def.offset_y = (WINDOW_HEIGHT / 2);
 }
 
