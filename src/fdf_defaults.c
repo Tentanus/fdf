@@ -6,12 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/15 17:43:51 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/16 14:57:34 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "fdf_init_utils.h"
+#include "fdf_init.h"
 
 int	get_z_scale(t_fdf *fdf)
 {
@@ -37,5 +37,6 @@ void	set_defaults(t_fdf *fdf)
 {
 	fdf->scale = SCALE;
 	fdf->z_scale = get_z_scale(fdf);
+	fdf->pov = ISOMETRIC;
 }
 

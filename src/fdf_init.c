@@ -6,12 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/15 19:35:12 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/16 16:16:26 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "fdf_init_utils.h"
+#include "fdf_init.h"
 #include "MLX42.h"
 
 char	*get_linemap(int fd)
@@ -78,7 +78,6 @@ void	init_pval(t_fdf *fdf, char *str)
 		if (ft_isdigit((int) str[i]) || str[i] == '-')
 		{
 			i += get_pval(fdf, &str[i], index_int);
-			fdf_render(fdf, index_int);
 			if (str[i] == ',')
 				i += get_colour(&(fdf->pval[index_int]), &str[i]);
 			else
@@ -96,12 +95,12 @@ t_fdf	fdf_init(const char *f_name)
 	int		fd;
 	char	*line_map;
 
+	set_defaults(&fdf);
 	fd = return_fd(f_name);
 	line_map = get_linemap(fd);
 	get_mapdimention(&fdf, line_map);
 	init_pval(&fdf, line_map);
 	free(line_map);
 	close(fd);
-	set_defaults(fdf);
 	return (fdf);
 }

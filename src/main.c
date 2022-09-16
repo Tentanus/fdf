@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/14 15:30:49 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/16 16:16:22 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int32_t main(int argc, char **argv)
 				, WINDOW_HEIGHT + WINDOW_BORDER);
 		if (!(fdf.mlx) || !(fdf.img))
 			fdf_exit(1, "main @ mlx alloc");
-		fdf_render(fdf);
+		fdf_render(&fdf);
 	}
 //	
 //	//TESTS 

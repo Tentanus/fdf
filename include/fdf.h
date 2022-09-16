@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/15 19:35:15 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/16 16:23:18 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define ISOMETRIC 0
 # define TOPDOWN 1
 
-// STRUCTURES
+// STRUCTURES & ENUMS
 
 typedef struct s_pval
 {
@@ -46,7 +46,6 @@ typedef struct s_pval
 	int				g;
 	int				b;
 	unsigned int	col;
-	int				OG_z;
 }	t_pval;
 
 typedef struct s_fdf
@@ -65,7 +64,7 @@ typedef struct s_fdf
 
 void	fdf_exit(int error_id, const char *loc);
 t_fdf	fdf_init(const char *f_name);
-void	fdf_render(t_fdf fdf);
+void	fdf_render(t_fdf *fdf);
 int		skiphex(char *str);
 int		get_colour(t_pval *pval, char *str);
 
