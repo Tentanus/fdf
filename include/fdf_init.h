@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/15 17:11:18 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/19 15:51:10 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 //DEFAULT MACROS 
 
-# define SCALE 1
-# define Z_SCALE 1
-# define PIXEL_X 1600
-# define PIXEL_Y 900
+# define SCALE 200 
 
 //FUNCTIONS
 

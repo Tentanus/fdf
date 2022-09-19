@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/15 19:08:47 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/19 11:41:49 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ int	get_pval(t_fdf *fdf, char *str, int index)
 
 	fdf->pval[index].x = (float) (index % fdf->map_x);
 	fdf->pval[index].y = (float) (index / fdf->map_x);
-	fdf->pval[index].OG_z = ft_atoi(str);
-	fdf->pval[index].z = fdf->pval[index].OG_z;
+	fdf->pval[index].z = ft_atoi(str);
 	i = skipnumb(str);
 	return (i);
 }

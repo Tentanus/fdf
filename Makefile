@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/09/16 16:23:10 by mweverli      ########   odam.nl          #
+#    Updated: 2022/09/19 15:53:33 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ all: $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $@
 
-$(NAME): $(LIB_LIST) $(OBJ)
+$(NAME): $(LIB_LIST) $(OBJ) 
 	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB) $(LIB_LIST) 
 	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
 

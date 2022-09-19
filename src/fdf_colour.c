@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/12 14:47:01 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/19 14:28:47 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int	get_rgb(int r, int g, int b)
 	return (r << 24 | g << 16 | b << 8 | 0x00);
 }
 
-int	get_colour(t_pval *pval, char *str)
+int	get_cval(t_cval *cval, char *str)
 {
 	int i;
 
 	i = skiphex(str);
 	if (*str == ',')
 		str++;
-	pval->r = (ft_htoi(str) >> 16 & 0xFF);
-	pval->g = ((ft_htoi(str) >> 8) & 0xFF);
-	pval->b = (ft_htoi(str) & 0xFF);
-	pval->col = get_rgb(pval->r, pval->g, pval->b);
+	cval->r = (ft_htoi(str) >> 16 & 0xFF);
+	cval->g = ((ft_htoi(str) >> 8) & 0xFF);
+	cval->b = (ft_htoi(str) & 0xFF);
+	cval->col = get_rgb(cval->r, cval->g, cval->b);
 	return (i);
 }
