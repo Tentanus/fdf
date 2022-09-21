@@ -6,13 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/19 15:37:43 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:44:21 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "fdf_init.h"
-#include "MLX42.h"
+#include <fdf.h>
+#include <fdf_utils.h>
 
 char	*get_linemap(int fd)
 {
@@ -68,10 +67,10 @@ void	get_mapdimention(t_fdf *fdf, char *str)
 void	init_val(t_fdf *fdf, char *str)
 {
 	size_t	i;
-	size_t	index_int;
+	size_t	index;
 
 	i = 0;
-	index_int = 0;
+	index = 0;
 	fdf->pval = ft_calloc(sizeof(t_pval), ((fdf->map_x * fdf->map_y) + 1));
 	fdf->cval = ft_calloc(sizeof(t_cval), ((fdf->map_x * fdf->map_y) + 1));
 	if (!fdf->pval || !fdf->cval)
@@ -80,12 +79,13 @@ void	init_val(t_fdf *fdf, char *str)
 	{
 		if (ft_isdigit((int) str[i]) || str[i] == '-')
 		{
-			i += get_pval(fdf, &str[i], index_int);
+			i += get_pval(fdf, &str[i], index);
 			if (str[i] == ',')
-				i += get_cval(&(fdf->cval[index_int]), &str[i]);
+				i += get_cval(&(fdf->cval[index]), &str[i]);
 			else
-				get_cval(&(fdf->cval[index_int]), "0xFFFFFF");
-			index_int++;
+				get_cval(&(fdf->cval[index]), "0xFFFFFF");
+			fdf->pval[index].col = fdf->cval[index].col;
+			index++;
 		}
 		else
 			i++;
@@ -100,15 +100,14 @@ t_fdf	fdf_init(const char *f_name)
 
 	fd = return_fd(f_name);
 	line_map = get_linemap(fd);
+	close(fd);
 	get_mapdimention(&fdf, line_map);
 	init_val(&fdf, line_map);
 	free(line_map);
-	close(fd);
 	set_defaults(&fdf);
 	fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, f_name, true);
-	fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH + BORDER, WINDOW_HEIGHT + 
-			BORDER);
+	fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 		if (!(fdf.mlx) || !(fdf.img))
-			fdf_exit(1, "main @ mlx alloc");
+			fdf_exit(1, "fdf_init @ mlx alloc");
 	return (fdf);
 }

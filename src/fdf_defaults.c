@@ -6,13 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/19 18:53:28 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:31:02 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "fdf_init.h"
-#include "libft.h"
+#include <fdf.h>
+#include <fdf_utils.h>
 
 int	get_z_scale(t_fdf *fdf)
 {
@@ -45,12 +44,12 @@ void	get_offset(t_fdf *fdf)
 	{
 		min = render_isometric(fdf, 0);
 		max = render_isometric(fdf, fdf_max);
-		fdf->offset_x = (WINDOW_WIDTH / 2) - (ft_abs(min.x - max.x) / 2);
-		fdf->offset_y = (WINDOW_HEIGHT / 2) - (ft_abs(min.y - max.y) / 2);
+		fdf->vval.offset_x = (WINDOW_WIDTH / 2) - (ft_abs(max.x - min.x) / 2);
+		fdf->vval.offset_y = (WINDOW_HEIGHT / 2) - (ft_abs(max.y - min.y) / 2);
 		if (ft_abs(min.x - max.x) > WINDOW_WIDTH 
 				|| ft_abs(min.y - max.y) > WINDOW_HEIGHT)
 		{
-			fdf->scale -= 1;
+			fdf->vval.scale--;
 			continue;
 		}
 		break;
@@ -59,9 +58,11 @@ void	get_offset(t_fdf *fdf)
 
 void	set_defaults(t_fdf *fdf)
 {
-	fdf->scale = SCALE;
-	fdf->z_scale = get_z_scale(fdf);
+	fdf->vval.scale = SCALE;
+	fdf->vval.z_scale = get_z_scale(fdf);
+	fdf->vval.angle = 0.523599;
 	get_offset(fdf);
-	fdf->pov = ISOMETRIC;
+
+	fdf_render_init(fdf);
 }
 

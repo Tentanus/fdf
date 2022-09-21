@@ -6,11 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/19 11:41:49 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:03:57 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <fdf.h>
+#include <fcntl.h>
 
 int	skiphex(char *str)
 {

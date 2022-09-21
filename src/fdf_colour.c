@@ -6,12 +6,20 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/19 14:28:47 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:50:02 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "libft.h"
+#include <fdf.h>
+#include <fdf_utils.h>
+
+unsigned int	get_col(t_pval p0, t_pval p1)
+{
+	if (p0.col == p1.col)
+		return (p0.col);
+	//rest of funciton
+	return (p0.col);
+}
 
 int	get_rgb(int r, int g, int b)
 {

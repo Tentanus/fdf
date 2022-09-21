@@ -6,11 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/19 16:57:27 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:52:39 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <fdf.h>
 
 void	check_input(const char *f_name)
 {
@@ -31,7 +31,6 @@ int32_t main(int argc, char **argv)
 	{
 		check_input(argv[1]);
 		fdf = fdf_init(argv[1]);
-		fdf_render(&fdf);
 	}
 //	
 //	//TESTS 
