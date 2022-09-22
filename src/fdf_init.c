@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:44:21 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/22 18:12:49 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,17 @@ void	init_val(t_fdf *fdf, char *str)
 	i = 0;
 	index = 0;
 	fdf->pval = ft_calloc(sizeof(t_pval), ((fdf->map_x * fdf->map_y) + 1));
-	fdf->cval = ft_calloc(sizeof(t_cval), ((fdf->map_x * fdf->map_y) + 1));
-	if (!fdf->pval || !fdf->cval)
+	if (!fdf->pval)
 		fdf_exit(1, "fdf_init/init_val");
 	while (str[i])
 	{
-		if (ft_isdigit((int) str[i]) || str[i] == '-')
+		if (ft_isdigit(str[i]) || str[i] == '-')
 		{
 			i += get_pval(fdf, &str[i], index);
 			if (str[i] == ',')
-				i += get_cval(&(fdf->cval[index]), &str[i]);
+				i += get_cval(&(fdf->pval[index]), &str[i]);
 			else
-				get_cval(&(fdf->cval[index]), "0xFFFFFF");
-			fdf->pval[index].col = fdf->cval[index].col;
+				get_cval(&(fdf->pval[index]), "0xFFFFFF");
 			index++;
 		}
 		else
@@ -98,7 +96,7 @@ t_fdf	fdf_init(const char *f_name)
 	int		fd;
 	char	*line_map;
 
-	fd = return_fd(f_name);
+	fd = return_fd(f_name); // add .fdf.fdf fix
 	line_map = get_linemap(fd);
 	close(fd);
 	get_mapdimention(&fdf, line_map);

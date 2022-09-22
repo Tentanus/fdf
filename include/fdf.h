@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:52:42 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/22 19:12:15 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ typedef struct s_pval
 
 typedef struct s_cval
 {
-	int				r;
-	int				g;
-	int				b;
-	unsigned int	col;
-} t_cval;
+	int		r;
+	int		g;
+	int		b;
+}	t_cval;
 
 typedef struct s_vval
 {
@@ -58,35 +57,36 @@ typedef struct s_vval
 	int		offset_x;
 	int		offset_y;
 	double	angle;
-} t_vval;
+}	t_vval;
 
 typedef struct s_draw
 {
-	int	dx;
-	int	dy;
-	int	x_sign;
-	int	y_sign;
-	int	x_err;
-	int	y_err;
-} t_draw;
+	int		dx;
+	int		dy;
+	int		x_sign;
+	int		y_sign;
+	int		x_err;
+	int		y_err;
+}	t_draw;
 
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	void*		img;
+	mlx_image_t	*img;
 	size_t		map_x;
 	size_t		map_y;
 	t_pval		*pval;
-	t_cval		*cval;
 	t_vval		vval;
 }	t_fdf;
 
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
-void	fdf_render_init(t_fdf *fdf);
+void	fdf_render(t_fdf *fdf);
 void	fdf_draw(t_fdf *fdf);
+void	fdf_loop(t_fdf *fdf, mlx_image_t *img);
 t_fdf	fdf_init(const char *f_name);
+
 
 // LIBRARY FUNCTION
 

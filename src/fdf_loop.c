@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   fdf_loop.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/22 19:12:10 by mweverli      ########   odam.nl         */
+/*   Created: 2022/09/22 18:10:06 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/09/22 19:12:09 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void	check_input(const char *f_name)
+/*
+void	key_hook()
+*/
+
+void	fdf_loop(t_fdf *fdf, mlx_image_t* img)
 {
-	size_t		len;
-
-	len = ft_strlen(f_name) - 4;
-	if (len <= 0 || ft_strncmp(&f_name[len], ".fdf", 4))
-		fdf_exit(3, "check_input");
-}
-
-int32_t main(int argc, char **argv)
-{
-	t_fdf	fdf;
-
-	if (argc != 2)
-		fdf_exit(2, "main");
-	else
-	{
-		check_input(argv[1]);
-		fdf = fdf_init(argv[1]);
-		fdf_loop(fdf, fdf.img);
-	}
-	mlx_close_window(fdf.mlx);
-	mlx_terminate(fdf.mlx);
-return (1);
+	ft_bzero(img->pixels, (img->width * img->height * sizeof(uint32_t)));
+	fdf_render(fdf);
+	
 }

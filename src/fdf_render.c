@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/15 19:09:27 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:52:38 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/22 19:12:13 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_pval	render_isometric(t_fdf *fdf, int index)
 	return (p);
 }
 
-void	fdf_render_init(t_fdf *fdf)
+void	fdf_render(t_fdf *fdf)
 {
 	size_t	x;
 	size_t	y;
