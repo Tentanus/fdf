@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 13:35:58 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 20:06:11 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	init_val(t_fdf *fdf, char *str)
 			if (str[i] == ',')
 				i += get_cval(&(fdf->pval[index]), &str[i]);
 			else
-				get_cval(&(fdf->pval[index]), "0xFFFFFF");
+				get_cval(&(fdf->pval[index]), "0xFFFFFFF");
 			index++;
 		}
 		else
@@ -98,7 +98,7 @@ t_fdf	fdf_init(const char *f_name)
 	int		fd;
 	char	*line_map;
 
-	fd = return_fd(f_name); // add .fdf.fdf fix
+	fd = return_fd(f_name);
 	line_map = get_linemap(fd);
 	close(fd);
 	get_mapdimention(&fdf, line_map);
@@ -107,7 +107,7 @@ t_fdf	fdf_init(const char *f_name)
 	set_defaults(&fdf);
 	fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, f_name, true);
 	fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-		if (!(fdf.mlx) || !(fdf.img))
-			fdf_exit(1, "fdf_init @ mlx alloc");
+	if (!(fdf.mlx) || !(fdf.img))
+		fdf_exit(1, "fdf_init @ mlx alloc");
 	return (fdf);
 }

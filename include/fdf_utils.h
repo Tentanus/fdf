@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 15:49:22 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 19:34:20 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ t_pval			render_isometric(t_fdf *fdf, int index);
 
 //	fdf_col
 int				get_cval(t_pval *pval, char *str);
-unsigned int	get_col_gradient(t_pval p0, t_pval p1, t_draw draw);
+uint32_t		get_col_gradient(t_pval p0, t_pval p1, t_draw draw);
 
 #endif

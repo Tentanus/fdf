@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/14 12:00:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 15:49:17 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 20:17:58 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,38 @@ t_draw	setup_draw(t_pval p0, t_pval p1)
 	t_draw	draw;
 
 	draw.dx = ft_abs(p1.x - p0.x);
-	draw.dy = ft_abs(p1.y - p0.y);
-	draw.x_sign = ft_ternary(p1.x < p0.x, 1, -1);
-	draw.y_sign = ft_ternary(p1.y < p0.y, 1, -1);
+	draw.dy = -ft_abs(p1.y - p0.y);
+	draw.x_sign = ft_ternary(p0.x < p1.x, 1, -1);
+	draw.y_sign = ft_ternary(p0.y < p1.y, 1, -1);
 	draw.x_err = p0.x;
 	draw.y_err = p0.y;
+	draw.err = draw.dx + draw.dy;
 	return (draw);
 }
-// p0 & p1 are unclear but 
+
 void	draw_line(t_fdf *fdf, t_pval p0, t_pval p1)
 {
 	t_draw	draw;
-	int		check;
+	int		err2;
 
 	draw = setup_draw(p0, p1);
-	check = 2 * (draw.dy - draw.dx);
 	while (1)
 	{
-		mlx_put_pixel(fdf->img, draw.x_err, draw.y_err, 0xFFFFFFFF);
-		if (draw.x_err == p1.x || draw.y_err <= p1.y)
-			break;
-		if (check >= 0)
+		if ((draw.x_err < WINDOW_WIDTH && draw.x_err > 0) &&
+			(draw.y_err < WINDOW_HEIGHT && draw.y_err > 0))
+			mlx_put_pixel(fdf->img, draw.x_err, draw.y_err, 0xFFFFFFFF);
+		if (draw.x_err == p1.x && draw.y_err == p1.y)
+			break ;
+		err2 = 2 * draw.err;
+		if (err2 >= draw.dy)
 		{
-			draw.y_err += draw.y_sign;
-			check -= 2 * draw.dx;
-		}
-		if (check < 0)
-		{
+			draw.err += draw.dy;
 			draw.x_err += draw.x_sign;
-			check += 2 * draw.dy;
+		}
+		if (err2 <= draw.dx)
+		{
+			draw.err += draw.dx;
+			draw.y_err += draw.y_sign;
 		}
 	}
 }

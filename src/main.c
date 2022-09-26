@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 14:40:12 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 17:15:56 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_input(const char *f_name)
 		fdf_exit(3, "main.c @ check_input");
 }
 
-int32_t main(int argc, char **argv)
+int32_t	main(int argc, char **argv)
 {
 	t_fdf	fdf;
 
@@ -36,5 +36,5 @@ int32_t main(int argc, char **argv)
 	mlx_close_window(fdf.mlx);
 	mlx_terminate(fdf.mlx);
 	free(fdf.pval);
-return (1);
+	return (1);
 }

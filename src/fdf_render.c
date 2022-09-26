@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/15 19:09:27 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/22 19:12:13 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 17:22:52 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 t_pval	render_isometric(t_fdf *fdf, int index)
 {
 	t_pval	p;
-	float	tmp_x;
-	float	tmp_y;
+	int		tmp_x;
+	int		tmp_y;
 
 	tmp_x = (index % fdf->map_x);
 	tmp_y = (index / fdf->map_x);
 	p.x = (tmp_x - tmp_y) * cos(fdf->vval.angle) * fdf->vval.scale;
-	p.y = -(fdf->pval[index].z * fdf->vval.z_scale) + (tmp_x + tmp_y) 
+	p.y = -(fdf->pval[index].z * fdf->vval.z_scale) + (tmp_x + tmp_y)
 		* sin(fdf->vval.angle) * fdf->vval.scale;
 	p.z = fdf->pval[index].z;
 	p.x += fdf->vval.offset_x;

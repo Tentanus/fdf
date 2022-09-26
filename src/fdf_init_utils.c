@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 14:41:27 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 17:12:52 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	skiphex(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (str[i] == ',')
@@ -28,7 +28,7 @@ int	skiphex(char *str)
 
 int	skipnumb(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -63,7 +63,7 @@ int	return_fd(const char *f_name)
 
 int	get_pval(t_fdf *fdf, char *str, int index)
 {
-	int i;
+	int	i;
 
 	fdf->pval[index].x = index % fdf->map_x;
 	fdf->pval[index].y = index / fdf->map_x;

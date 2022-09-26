@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 14:34:42 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 19:39:50 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 
 # define WINDOW_WIDTH 1980
 # define WINDOW_HEIGHT 1080
-# define BORDER 10
 
 // STRUCTURES & ENUMS
 
@@ -40,7 +39,7 @@ typedef struct s_pval
 	int			x;
 	int			y;
 	int			z;
-	unsigned int	col;
+	uint32_t	col;
 }	t_pval;
 
 typedef struct s_cval
@@ -67,6 +66,7 @@ typedef struct s_draw
 	int		y_sign;
 	int		x_err;
 	int		y_err;
+	int		err;
 }	t_draw;
 
 typedef struct s_fdf
