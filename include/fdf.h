@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/22 19:12:15 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 14:34:42 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //INCLUDES
 
 # include <unistd.h>	// close read write
-# include <stdlib.h>	// malloc free exit
+//# include <stdlib.h>	// malloc free exit
 # include <errno.h>		// errno
 # include <limits.h>
 //	# include <fcntl.h>		// open
@@ -37,9 +37,9 @@
 
 typedef struct s_pval
 {
-	float			x;
-	float			y;
-	float			z;
+	int			x;
+	int			y;
+	int			z;
 	unsigned int	col;
 }	t_pval;
 

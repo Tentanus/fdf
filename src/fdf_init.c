@@ -6,9 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/22 18:12:49 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 13:35:58 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 #include <fdf.h>
 #include <fdf_utils.h>

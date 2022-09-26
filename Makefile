@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/09/19 15:53:33 by mweverli      ########   odam.nl          #
+#    Updated: 2022/09/26 12:26:10 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,4 +154,3 @@ $(LIB_PINT_ARC):
 .PHONY: all clean fclean tclean re test test_db
 
 .DEFAULT_GOAL := all
-

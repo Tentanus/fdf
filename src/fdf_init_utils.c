@@ -6,12 +6,13 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:03:57 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 14:41:27 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 int	skiphex(char *str)
 {
@@ -64,8 +65,8 @@ int	get_pval(t_fdf *fdf, char *str, int index)
 {
 	int i;
 
-	fdf->pval[index].x = (float) (index % fdf->map_x);
-	fdf->pval[index].y = (float) (index / fdf->map_x);
+	fdf->pval[index].x = index % fdf->map_x;
+	fdf->pval[index].y = index / fdf->map_x;
 	fdf->pval[index].z = ft_atoi(str);
 	i = skipnumb(str);
 	return (i);

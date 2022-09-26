@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/22 19:12:16 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/26 15:49:22 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //DEFAULT MACROS 
 
-# define SCALE 50 
+# define SCALE 100 
 # define ISOMETRIC 1 
 
 //	FUNCTIONS
