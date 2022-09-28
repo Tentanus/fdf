@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 17:03:00 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 19:34:20 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 13:35:17 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int				return_fd(const char *f_name);
 void			set_defaults(t_fdf *fdf);
 int				get_pval(t_fdf *fdf, const char *str, int index);
 
-//	fdf_render
-t_pval			render_isometric(t_fdf *fdf, int index);
+//	fdf_compute
+t_pval			compute_isometric(t_fdf *fdf, int index);
 
 //	fdf_col
 int				get_cval(t_pval *pval, char *str);

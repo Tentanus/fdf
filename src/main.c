@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:32:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 17:15:56 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:48:21 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int32_t	main(int argc, char **argv)
 	{
 		check_input(argv[1]);
 		fdf = fdf_init(argv[1]);
-		fdf_loop(&fdf, fdf.img);
+		fdf_loop(&fdf);
+		mlx_close_window(fdf.mlx);
+		mlx_terminate(fdf.mlx);
+		free(fdf.pval);
 	}
-	mlx_close_window(fdf.mlx);
-	mlx_terminate(fdf.mlx);
-	free(fdf.pval);
 	return (1);
 }

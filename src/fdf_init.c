@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 20:06:11 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:44:37 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_linemap(int fd)
 	char	*tmp;
 	char	*line_map;
 	char	buf[10001];
-	size_t	read_ret;
+	int		read_ret;
 
 	line_map = ft_calloc(1, 1);
 	read_ret = read(fd, buf, 10000);
@@ -29,11 +29,16 @@ char	*get_linemap(int fd)
 	{
 		buf[read_ret] = '\0';
 		tmp = ft_strjoin(line_map, buf);
+		free(line_map);
 		if (!tmp)
 			fdf_exit(1, "fdf_init/get_linemap");
-		free(line_map);
 		line_map = tmp;
 		read_ret = read(fd, buf, 10000);
+		if (read_ret == -1)
+		{
+			free(line_map);
+			fdf_exit(1, "fdf_init/get_linemap");
+		}
 		buf[read_ret] = '\0';
 	}
 	return (line_map);
@@ -108,6 +113,9 @@ t_fdf	fdf_init(const char *f_name)
 	fdf.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, f_name, true);
 	fdf.img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!(fdf.mlx) || !(fdf.img))
+	{
+		free(fdf.pval);
 		fdf_exit(1, "fdf_init @ mlx alloc");
+	}
 	return (fdf);
 }

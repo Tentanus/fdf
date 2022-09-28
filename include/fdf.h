@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 19:39:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:48:33 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ typedef struct s_fdf
 // FUNCTIONS
 
 void	fdf_exit(int error_id, const char *loc);
+void	fdf_compute(t_fdf *fdf);
 void	fdf_render(t_fdf *fdf);
-void	fdf_draw(t_fdf *fdf);
-void	fdf_loop(t_fdf *fdf, mlx_image_t *img);
+void	fdf_loop(t_fdf *fdf);
 t_fdf	fdf_init(const char *f_name);
 
 

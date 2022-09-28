@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 20:18:01 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:48:28 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ uint32_t	get_col_gradient(t_pval p0, t_pval p1, t_draw draw)
 	t_cval			cval;
 	uint32_t		ret;
 
+
+	ft_printf("%X\t%X\n", p0.col, p1.col);
 //	if (p0.col == p1.col)
 //		return ((p0.col << 8) | 0x000000FF);
 //	if (draw.dx > draw.dy)
@@ -59,7 +61,7 @@ uint32_t	get_col_gradient(t_pval p0, t_pval p1, t_draw draw)
 	cval.b = ((p0.col >> 0) & 0xFF);
 	ret = get_rgb(cval.r, cval.g, cval.b) | 0xFF;
 //	ft_printf("%X\t%X\t%X\t\t%X\n",cval.r, cval.g, cval.b, ret);
-	return (ret);
+	return (0x88FFFFFF);
 }
 
 int	get_cval(t_pval *pval, char *str)

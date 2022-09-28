@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 17:12:52 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:05:48 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ int	skipnumb(char *str)
 int	return_fd(const char *f_name)
 {
 	int			fd;
-	const char	*dir;
+	const char	*dir = "maps/";
 	char		*path;
 
 	path = NULL;
-	dir = "maps/";
-	if (!ft_strnstr(f_name, "maps/", 7))
+	if (!ft_strnstr(f_name, dir, ft_strlen(f_name) - 4))
 	{
 		path = ft_strjoin(dir, f_name);
 		if (!path)

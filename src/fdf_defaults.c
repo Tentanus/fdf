@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/26 17:11:04 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 13:27:20 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	get_offset(t_fdf *fdf)
 	fdf_max = (fdf->map_x * fdf->map_y - 1);
 	while (1)
 	{
-		min = render_isometric(fdf, 0);
-		max = render_isometric(fdf, fdf_max);
+		min = compute_isometric(fdf, 0);
+		max = compute_isometric(fdf, fdf_max);
 		fdf->vval.offset_x = (WINDOW_WIDTH / 2) - (ft_abs(max.x - min.x) / 2);
 		fdf->vval.offset_y = (WINDOW_HEIGHT / 2) - (ft_abs(max.y - min.y) / 2);
 		if (ft_abs(max.x - min.x) > WINDOW_WIDTH

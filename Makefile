@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/09/26 12:26:10 by mweverli      ########   odam.nl          #
+#    Updated: 2022/09/28 14:48:38 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,17 +34,12 @@ LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
 LIB_LIB_ARC	:=	$(LIB_LIBFT)/$(LIBFT).a
 
-GNL			:=	get_next_line
-LIB_GNL		:=	$(LIB_DIR)/$(GNL)
-LIB_GNL_ARC	:=	$(LIB_GNL)/$(GNL).a
-
 PINT		:=	printf
 LIB_PINT	:=	$(LIB_DIR)/$(PINT)
 LIB_PINT_ARC:=	$(LIB_PINT)/$(PINT).a
 
 LIB_LIST	:=	$(LIB_MLX_ARC) \
 				$(LIB_LIB_ARC) \
-				$(LIB_GNL_ARC) \
 				$(LIB_PINT_ARC)
 
 #=============== COLOURS ================#
@@ -55,26 +50,18 @@ GREEN	:= \033[32;1m
 CYAN	:= \033[36;1m
 RESET	:= \033[0m
 
-#============ TEST ARGUMENTS ============#
-
-ARG_	:=	./maps/
-ARG_1	:=	$(ARG)SQ_2x2.fdf
-ARG_2	:=	$(ARG)SQ_4x4.fdf
-ARG_3	:=	$(ARG)42.fdf
-
 #============= COMPILATION ==============#
 
 HEADER		:=	-I $(INC_DIR) \
 				-I $(LIB_MLX)/include/MLX42 \
 				-I $(LIB_LIBFT)/include \
-				-I $(LIB_GNL)/include \
 				-I $(LIB_PINT)
 
 LIB			:=	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -g
-CFL_DB		:=	-Wall -Werror -Wextra -g -fsanitize=address
+CFL			:=	-Wall -Werror -Wextra 
+CFL_DB		:=	-Wall -Werror -Wextra -fsanitize=address
 
 ifdef DB
 COMPILE		:=	$(CC) $(CFL_DB)
@@ -111,7 +98,6 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
 lclean:
 	@make -C $(LIB_MLX) clean
 	@make -C $(LIB_LIBFT) clean
-	@make -C $(LIB_GNL) clean
 	@make -C $(LIB_PINT) clean
 
 clean:
@@ -123,7 +109,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(LIB_MLX_ARC)
 	@rm -f $(LIB_LIB_ARC)
-	@rm -f $(LIB_GNL_ARC)
 	@rm -f $(LIB_PINT_ARC)
 
 tclean: fclean
@@ -140,9 +125,6 @@ $(LIB_MLX_ARC):
 
 $(LIB_LIB_ARC):
 	@make -C $(LIB_LIBFT)
-
-$(LIB_GNL_ARC):
-	@make -C $(LIB_GNL)
 
 $(LIB_PINT_ARC):
 	@make -C $(LIB_PINT)
