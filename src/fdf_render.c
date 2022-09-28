@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/14 12:00:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:48:25 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 18:59:40 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	draw_line(t_fdf *fdf, t_pval p0, t_pval p1)
 	{
 		if ((draw.x_err < WINDOW_WIDTH && draw.x_err > 0)
 			&& (draw.y_err < WINDOW_HEIGHT && draw.y_err > 0))
-			mlx_put_pixel(fdf->img, draw.x_err, draw.y_err, get_col_gradient(p0, p1, draw));
+			mlx_put_pixel(fdf->img, draw.x_err, draw.y_err,
+				get_col_gradient(p0, p1, draw));
 		if (draw.x_err == p1.x && draw.y_err == p1.y)
 			break ;
 		err2 = 2 * draw.err;

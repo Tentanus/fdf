@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/03 13:54:25 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:48:28 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 18:35:34 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	get_gradient(int c0, int c1, float per)
 {
 	return ((int)((1 - per) * c0 + (per * c1)));
 }
-
-// get_rgb might be too large for data_type.
-// check if mlx needs rgb vs. rgba
 
 int	get_rgb(int r, int g, int b)
 {
@@ -34,39 +31,35 @@ float	get_percent(int p_min, int p_max, int p_cur)
 	dist = p_cur - p_min;
 	max_dist = p_max - p_min;
 	if (max_dist == 0)
-		return (1);
+		return (1.0);
 	return (dist / max_dist);
 }
 
 uint32_t	get_col_gradient(t_pval p0, t_pval p1, t_draw draw)
 {
-//	float			per;
+	float			per;
 	t_cval			cval;
 	uint32_t		ret;
 
-
-	ft_printf("%X\t%X\n", p0.col, p1.col);
-//	if (p0.col == p1.col)
-//		return ((p0.col << 8) | 0x000000FF);
-//	if (draw.dx > draw.dy)
-//		per = get_percent(p0.x, p1.x, draw.dx);
-//	else
-//		per = get_percent(p0.y, p1.y, draw.dy);
-//	per = 1;
-//	ft_printf("%X\t%X\n", p0.col, p1.col);
-	draw.dx = 0;
-	p1.col = 0;
-	cval.r = ((p0.col >> 16) & 0xFF);
-	cval.g = ((p0.col >> 8) & 0xFF);
-	cval.b = ((p0.col >> 0) & 0xFF);
+	if (p0.col == p1.col)
+		return (p0.col | 0xFF);
+	if (draw.dx > draw.dy)
+		per = get_percent(p0.x, p1.x, draw.x_err);
+	else
+		per = get_percent(p0.y, p1.y, draw.y_err);
+	cval.r = get_gradient(((p0.col >> 24) & 0xFF),
+			((p1.col >> 24) & 0xFF), per);
+	cval.g = get_gradient(((p0.col >> 16) & 0xFF),
+			((p1.col >> 16) & 0xFF), per);
+	cval.b = get_gradient(((p0.col >> 8) & 0xFF),
+			((p1.col >> 8) & 0xFF), per);
 	ret = get_rgb(cval.r, cval.g, cval.b) | 0xFF;
-//	ft_printf("%X\t%X\t%X\t\t%X\n",cval.r, cval.g, cval.b, ret);
-	return (0x88FFFFFF);
+	return (ret);
 }
 
 int	get_cval(t_pval *pval, char *str)
 {
-	t_cval	cval;
+	t_cval		cval;
 	int			i;
 	uint32_t	hex;
 

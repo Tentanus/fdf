@@ -6,19 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:10:06 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:48:29 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 18:32:50 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
-/*
-void	fdf_clean_up(t_fdf *fdf)
-{
-	mlx_close_window(fdf->mlx);
-	mlx_terminate(fdf->mlx);
-	mlx_delete_image(fdf->mlx, fdf->img);
-}
-*/
 
 static void	fdf_key_move(mlx_key_data_t keydata, t_fdf *fdf)
 {

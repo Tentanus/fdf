@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/15 19:09:27 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 13:39:17 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 15:20:09 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_pval	compute_isometric(t_fdf *fdf, int index)
 	p.z = fdf->pval[index].z;
 	p.x += fdf->vval.offset_x;
 	p.y += fdf->vval.offset_y;
+	p.col = fdf->pval[index].col;
 	return (p);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/25 11:21:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:44:37 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/28 16:28:35 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,9 @@ char	*get_linemap(int fd)
 	int		read_ret;
 
 	line_map = ft_calloc(1, 1);
-	read_ret = read(fd, buf, 10000);
-	buf[read_ret] = '\0';
+	read_ret = 1;
 	while (read_ret != 0)
 	{
-		buf[read_ret] = '\0';
-		tmp = ft_strjoin(line_map, buf);
-		free(line_map);
-		if (!tmp)
-			fdf_exit(1, "fdf_init/get_linemap");
-		line_map = tmp;
 		read_ret = read(fd, buf, 10000);
 		if (read_ret == -1)
 		{
@@ -40,6 +33,11 @@ char	*get_linemap(int fd)
 			fdf_exit(1, "fdf_init/get_linemap");
 		}
 		buf[read_ret] = '\0';
+		tmp = ft_strjoin(line_map, buf);
+		free(line_map);
+		if (!tmp)
+			fdf_exit(1, "fdf_init/get_linemap");
+		line_map = tmp;
 	}
 	return (line_map);
 }

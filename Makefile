@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/09/28 14:48:38 by mweverli      ########   odam.nl          #
+#    Updated: 2022/09/28 15:03:45 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ HEADER		:=	-I $(INC_DIR) \
 LIB			:=	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra 
+CFL			:=	-Wall -Werror -Wextra -g
 CFL_DB		:=	-Wall -Werror -Wextra -fsanitize=address
 
 ifdef DB
