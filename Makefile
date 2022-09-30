@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/11 17:41:13 by mweverli      #+#    #+#                  #
-#    Updated: 2022/09/28 15:03:45 by mweverli      ########   odam.nl          #
+#    Updated: 2022/09/30 22:25:55 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,8 @@ db: clean
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
 	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
+
+flclean: lclean fclean
 
 lclean:
 	@make -C $(LIB_MLX) clean

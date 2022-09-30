@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:48:33 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/30 22:26:18 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 
 //INCLUDES
 
-# include <unistd.h>	// close read write
-//# include <stdlib.h>	// malloc free exit
-# include <errno.h>		// errno
+# include <unistd.h>
+# include <errno.h>
 # include <limits.h>
-//	# include <fcntl.h>		// open
-//	# include <stdio.h>		// perror
-//	# include <string.h>	// strerror
-//	# include <math.h>		// math functions
 
 # include <MLX42.h>
 # include <libft.h>
@@ -31,6 +26,7 @@
 
 # define WINDOW_WIDTH 1980
 # define WINDOW_HEIGHT 1080
+# define BORDER 100
 
 // STRUCTURES & ENUMS
 
@@ -86,7 +82,6 @@ void	fdf_compute(t_fdf *fdf);
 void	fdf_render(t_fdf *fdf);
 void	fdf_loop(t_fdf *fdf);
 t_fdf	fdf_init(const char *f_name);
-
 
 // LIBRARY FUNCTION
 

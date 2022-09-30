@@ -6,11 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:10:06 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 18:32:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/09/30 22:12:04 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+#include <fdf_utils.h>
 
 static void	fdf_key_move(mlx_key_data_t keydata, t_fdf *fdf)
 {
@@ -27,13 +28,19 @@ static void	fdf_key_move(mlx_key_data_t keydata, t_fdf *fdf)
 static void	fdf_key_zoom(mlx_key_data_t keydata, t_fdf *fdf)
 {
 	if (keydata.key == MLX_KEY_EQUAL)
-		fdf->vval.scale += 5;
+	{
+		fdf->vval.scale += 2;
+		fdf->vval.z_scale += 1;
+	}
 	if (keydata.key == MLX_KEY_MINUS)
-		fdf->vval.scale -= 5;
+	{
+		fdf->vval.scale -= 2;
+		fdf->vval.z_scale -= 1;
+	}
 	if (keydata.key == MLX_KEY_P)
-		fdf->vval.z_scale += 2;
+		fdf->vval.z_scale += 1;
 	if (keydata.key == MLX_KEY_O)
-		fdf->vval.z_scale -= 2;
+		fdf->vval.z_scale -= 1;
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(fdf->mlx);
 }
