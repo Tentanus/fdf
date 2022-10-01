@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/30 22:24:32 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/01 17:21:45 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	center_map_y(t_fdf *fdf)
 	{
 		min = compute_isometric(fdf, 0);
 		max = compute_isometric(fdf, (fdf->map_x * fdf->map_y - 1));
-		fdf->vval.offset_y = ((WINDOW_HEIGHT - 2 * BORDER) / 2)
-			- (ft_abs(max.y - min.y) / 2);
 		if (ft_abs(max.y - min.y) < (WINDOW_HEIGHT - 2 * BORDER))
 			break ;
 		fdf->vval.scale--;
 	}
+	fdf->vval.offset_y = (WINDOW_HEIGHT  / 2) - (ft_abs(max.y - min.y) / 2);
 	while (min.y < BORDER || max.y > (WINDOW_HEIGHT - BORDER))
 	{
 		min = compute_isometric(fdf, 0);
@@ -48,12 +47,11 @@ void	center_map_x(t_fdf *fdf)
 	{
 		left = compute_isometric(fdf, ((fdf->map_y - 1) * fdf->map_x));
 		right = compute_isometric(fdf, fdf->map_x - 1);
-		fdf->vval.offset_x = ((WINDOW_WIDTH - 2 * BORDER) / 2)
-			- (ft_abs(right.x - left.x) / 2);
 		if (ft_abs(right.x - left.x) < (WINDOW_WIDTH - 2 * BORDER))
 			break ;
 		fdf->vval.scale--;
 	}
+	fdf->vval.offset_x = (WINDOW_WIDTH / 2);
 	while (left.x < BORDER || right.x > (WINDOW_WIDTH - BORDER))
 	{
 		left = compute_isometric(fdf, ((fdf->map_y - 1) * fdf->map_x));
