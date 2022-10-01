@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/13 17:37:32 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/01 17:21:45 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/01 21:46:29 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	center_map_y(t_fdf *fdf)
 			break ;
 		fdf->vval.scale--;
 	}
-	fdf->vval.offset_y = (WINDOW_HEIGHT  / 2) - (ft_abs(max.y - min.y) / 2);
+	fdf->vval.offset_y = (WINDOW_HEIGHT / 2) - (ft_abs(max.y - min.y) / 2);
 	while (min.y < BORDER || max.y > (WINDOW_HEIGHT - BORDER))
 	{
 		min = compute_isometric(fdf, 0);
