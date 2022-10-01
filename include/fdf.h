@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/01 18:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/30 22:26:18 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/01 21:15:58 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <errno.h>
 # include <limits.h>
+# include <stdnoreturn.h>
 
 # include <MLX42.h>
 # include <libft.h>
@@ -77,14 +78,14 @@ typedef struct s_fdf
 
 // FUNCTIONS
 
-void	fdf_exit(int error_id, const char *loc);
-void	fdf_compute(t_fdf *fdf);
-void	fdf_render(t_fdf *fdf);
-void	fdf_loop(t_fdf *fdf);
-t_fdf	fdf_init(const char *f_name);
+noreturn void	fdf_exit(int error_id, const char *loc);
+void			fdf_compute(t_fdf *fdf);
+void			fdf_render(t_fdf *fdf);
+void			fdf_loop(t_fdf *fdf);
+t_fdf			fdf_init(const char *f_name);
 
 // LIBRARY FUNCTION
 
-int		ft_printf(const char *str, ...);
+int				ft_printf(const char *str, ...);
 
 #endif

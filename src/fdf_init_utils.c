@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/31 16:58:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/09/28 14:05:48 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/01 21:11:55 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,15 @@ int	skipnumb(char *str)
 int	return_fd(const char *f_name)
 {
 	int			fd;
+	int			errno_old;
 	const char	*dir = "maps/";
 	char		*path;
 
 	path = NULL;
+	fd = open(f_name, O_RDONLY);
+	if (fd != -1)
+		return (fd);
+	errno_old = errno;
 	if (!ft_strnstr(f_name, dir, ft_strlen(f_name) - 4))
 	{
 		path = ft_strjoin(dir, f_name);
@@ -53,11 +58,10 @@ int	return_fd(const char *f_name)
 		fd = open(path, O_RDONLY);
 		free(path);
 	}
-	else
-		fd = open(f_name, O_RDONLY);
-	if (fd == -1)
-		fdf_exit(1, "fdf_init/return_fd");
-	return (fd);
+	if (fd != -1)
+		return (fd);
+	errno = errno_old;
+	fdf_exit(1, "fdf_init/return_fd");
 }
 
 int	get_pval(t_fdf *fdf, char *str, int index)
