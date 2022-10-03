@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/15 19:09:27 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/01 17:21:42 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/03 17:34:37 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_pval	compute_isometric(t_fdf *fdf, int index)
 	int		tmp_x;
 	int		tmp_y;
 
-	tmp_x = (index % fdf->map_x);
-	tmp_y = (index / fdf->map_x);
+	tmp_x = (index % fdf->map_x) - fdf->map_x / 2;
+	tmp_y = (index / fdf->map_x) - fdf->map_y / 2;
 	p.x = (tmp_x - tmp_y) * cos(fdf->vval.angle) * fdf->vval.scale;
 	p.y = -(fdf->pval[index].z * fdf->vval.z_scale) + (tmp_x + tmp_y)
 		* sin(fdf->vval.angle) * fdf->vval.scale;

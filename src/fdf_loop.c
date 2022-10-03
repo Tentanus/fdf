@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:10:06 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/01 17:21:44 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/03 12:41:02 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,9 @@ static void	fdf_key_move(mlx_key_data_t keydata, t_fdf *fdf)
 static void	fdf_key_zoom(mlx_key_data_t keydata, t_fdf *fdf)
 {
 	if (keydata.key == MLX_KEY_EQUAL)
-	{
 		fdf->vval.scale += 2;
-		fdf->vval.z_scale += 1;
-	}
 	if (keydata.key == MLX_KEY_MINUS)
-	{
 		fdf->vval.scale -= 2;
-		fdf->vval.z_scale -= 1;
-	}
 	if (keydata.key == MLX_KEY_P)
 		fdf->vval.z_scale += 1;
 	if (keydata.key == MLX_KEY_O)
