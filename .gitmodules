@@ -5,6 +5,3 @@
 	path = lib/mlx
 	url = https://github.com/codam-coding-college/MLX42
 	ingnore = dirty
-[submodule "lib/printf"]
-	path = lib/printf
-	url = git@github.com:Tentanus/printf.git
